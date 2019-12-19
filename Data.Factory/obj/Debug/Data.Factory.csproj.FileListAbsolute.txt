@@ -1,0 +1,98 @@
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Factory.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Factory.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Interface.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.MSSQL.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Model.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Utility.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\LitJSON.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Interface.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.MSSQL.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Data.Model.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\Utility.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\bin\Debug\LitJSON.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\obj\Debug\Data.Factory.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\Data.Factory\obj\Debug\Data.Factory.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Factory.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Factory.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Interface.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.MSSQL.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Model.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\Utility.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\LitJSON.dll
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Interface.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.MSSQL.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\Data.Model.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\Utility.pdb
+E:\source\OA\OA\Data.Factory\bin\Debug\LitJSON.pdb
+E:\source\OA\OA\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\Data.Factory\obj\Debug\Data.Factory.dll
+E:\source\OA\OA\Data.Factory\obj\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Interface.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.MSSQL.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Model.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Utility.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\LitJSON.dll
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Interface.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.MSSQL.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Data.Model.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\Utility.pdb
+E:\source\OA - 副本\OA\Data.Factory\bin\Debug\LitJSON.pdb
+E:\source\OA - 副本\OA\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA\Data.Factory\obj\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA\Data.Factory\obj\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Interface.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Model.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Utility.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\LitJSON.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Interface.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Data.Model.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\Utility.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\bin\Debug\LitJSON.pdb
+E:\source\OA - 副本\OA - 副本\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\Data.Factory\obj\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA - 副本\Data.Factory\obj\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Model.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Utility.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\LitJSON.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Data.Model.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Utility.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\LitJSON.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\Excel.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Factory\bin\Debug\COM.Excel.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Factory.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Factory.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Interface.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.MSSQL.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Model.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Utility.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Excel.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\COM.Excel.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\LitJSON.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Interface.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.MSSQL.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Data.Model.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Utility.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\LitJSON.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.csprojResolveAssemblyReference.cache
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\obj\Debug\Data.Factory.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Microsoft.Office.Interop.Excel.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\office.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\Microsoft.Vbe.Interop.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\Data.Factory\bin\Debug\office.xml

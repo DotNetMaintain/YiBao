@@ -1,0 +1,54 @@
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+C:\Users\Administrator.thinkpad-PC\Desktop\jiuyong-RoadFlow-UnMean\RoadFlow\src\RoadFlow\MyCache.Factory\obj\Debug\MyCache.Factory.pdb
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+E:\source\OA\OA\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+E:\source\OA\OA\MyCache.Factory\obj\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+E:\source\OA - 副本\OA\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+E:\source\OA - 副本\OA\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA\MyCache.Factory\obj\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Factory.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Factory.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.InProc.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Interface.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.InProc.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\bin\Debug\MyCache.Interface.pdb
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.csprojResolveAssemblyReference.cache
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.dll
+G:\source\公司源码\医保源码\Code\OA - 可发布版本\MyCache.Factory\obj\Debug\MyCache.Factory.pdb

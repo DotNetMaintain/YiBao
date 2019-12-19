@@ -1,0 +1,99 @@
+﻿@{
+    string FlowID = Request.QueryString["flowid"];
+    string StepID = Request.QueryString["stepid"];
+    string GroupID = Request.QueryString["groupid"];
+    string TaskID = Request.QueryString["taskid"];
+    string InstanceID = Request.QueryString["instanceid"];
+    string DisplayModel = Request.QueryString["display"] ?? "0";
+    string DBConnID = "06075250-30dc-4d32-bf97-e922cb30fac8";
+    string DBTable = "EffectTimer";
+    string DBTablePK = "ID";
+    string DBTableTitle = "Title";
+    Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+    Business.Platform.WorkFlow BWorkFlow = new Business.Platform.WorkFlow();
+    Business.Platform.WorkFlowTask BWorkFlowTask = new Business.Platform.WorkFlowTask();
+    string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+    LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+    string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/FlowRun/Forms/common.js" type="text/javascript"></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="EffectTimer.Title" name="EffectTimer.Title" value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="EffectTimer.Title" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="06075250-30dc-4d32-bf97-e922cb30fac8" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="EffectTimer" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="Title" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<link rel="stylesheet" href="~/js/flipclock.css">
+
+<script src="~/js/jquery-1.10.2.js"></script>
+
+<script src="~/js/flipclock.js"></script>
+<script type="text/javascript">
+
+    var clock;
+
+    $(document).ready(function() {
+
+        clock = $('.clock').FlipClock({
+            clockFace: 'HourlyCounter',
+            countdown: true,
+            autoStart: false,
+            callbacks: {
+                start: function() {
+                    $('.message').html('The clock has started!');
+                }
+            }
+        });
+
+        $('.start').click(function(e) {
+
+            clock = $('.clock').FlipClock({
+                clockFace: 'HourlyCounter'
+
+            });
+
+            runClock();
+        });
+
+        $('.stop').click(function(e) {
+            clock.stop();
+            var today = new Date();
+            var display= today.toLocaleString();
+            document.getElementById("EffectTimer.EndTime").value=display;
+        });
+
+
+
+
+
+    });
+
+
+
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(function (){
+		formrun.initData(initData, "EffectTimer", fieldStatus, displayModel);
+	});
+
+
+
+	function runClock(){
+	    var today = new Date();
+	    var display= today.toLocaleString();
+	    document.getElementById("EffectTimer.StartTime").value=display;
+
+	}
+
+
+</script>
+<p><br /></p><p style="text-align: center;"><span style="font-family: 黑体, SimHei; font-size: 24px;">窗口业务时效采集 </span></p><p><span style="font-family: 黑体, SimHei; font-size: 24px;"><br /></span></p>
+<table class="flowformtable" cellspacing="1" cellpadding="0"><tbody><tr class="firstRow"><td width="269" valign="top" style="-ms-word-break: break-all;">业务办理人<br /></td><td width="269" valign="top"><input name="EffectTimer.UserID" title="" class="mymember" id="EffectTimer.UserID" type="text" value="u_@Business.Platform.Users.CurrentUserID.ToString()" rootid="" type1="flow_org" isflow="1" more="0" workgroup="0" station="0" dept="0" user="1" unit="0" /></td><td width="269" valign="top" style="-ms-word-break: break-all;">业务类型<br /></td><td width="269" valign="top"><select name="EffectTimer.BunessType" class="myselect" id="EffectTimer.BunessType" type1="flow_select" isflow="1"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("a4c6a246-64c8-4441-8852-0357120921fb".ToGuid(), Business.Platform.Dictionary.OptionValueField.ID, ""))</select></td></tr><tr><td width="269" valign="top" style="-ms-word-break: break-all;">开始计时<br /></td><td width="269" valign="top"><button class="start">Start Clock</button><input name="EffectTimer.StartTime" title="" id="EffectTimer.StartTime" type="text" value="" isflow="1" /></td><td width="269" valign="top" style="-ms-word-break: break-all;" class="start">结束计时<br /></td><td width="269" valign="top" style="-ms-word-break: break-all;"><button class="stop">Stop Clock</button><input name="EffectTimer.EndTime" title="" id="EffectTimer.EndTime" type="text" value="" isflow="1" /></td></tr></tbody></table>
+
+<div class="clock" style="margin:2em;"></div>
+<div class="message"></div>
+<p><span style="font-family: 黑体, SimHei; font-size: 24px;"><br /></span></p>

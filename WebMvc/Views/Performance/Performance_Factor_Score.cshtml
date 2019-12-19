@@ -1,0 +1,949 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "Performance_Factor_Score";
+    string query = string.Format("appid={0}&tabid={1}", Request.QueryString["appid"], Request.QueryString["tabid"]);
+    ViewBag.Query = query;
+
+
+    DateTime dt = DateTime.Now;
+    if (!string.IsNullOrEmpty(Request.Form["starttime"]))
+    {
+        dt = Convert.ToDateTime(Request.Form["starttime"].ToString());
+    }
+
+    //本月第一天时间
+    DateTime dt_First = dt.AddDays(1 - (dt.Day));
+    //获得某年某月的天数
+    int year = dt.Date.Year;
+    int month = dt.Date.Month;
+    int dayCount = DateTime.DaysInMonth(year, month);
+    //本月最后一天时间
+    DateTime dt_Last = dt_First.AddDays(dayCount - 1);
+
+
+    string start = Request.Form["starttime"];
+    string end = Request.Form["endtime"];
+    if (!string.IsNullOrEmpty(start))
+    {
+        start = start.Substring(0, 4) + start.Substring(5, 2);
+
+    }
+
+    if (!string.IsNullOrEmpty(end))
+    {
+        end = end.Substring(0, 4) + end.Substring(5, 2);
+
+    }
+
+
+    string restsql = string.Empty;
+
+    //        restsql = @"select score.* from Performance_Score score where USER_NAME  in (
+    //select name from dbo.Users
+    //) and  StartDate >='{0}' and  EndDate<='{1}'";
+
+    restsql = @"select min(score.StartDate) StartDate,max(score.EndDate) EndDate,User_Name,
+SUM(Performance_001) Performance_001,
+SUM(Performance_002) Performance_002,
+SUM(Performance_003) Performance_003,
+SUM(Performance_004) Performance_004,
+SUM(Performance_005) Performance_005,
+SUM(Performance_006) Performance_006,
+SUM(Performance_007) Performance_007,
+SUM(Performance_008) Performance_008,
+SUM(Performance_009) Performance_009,
+SUM(Performance_010) Performance_010,
+SUM(Performance_011) Performance_011,
+SUM(Performance_012) Performance_012,
+SUM(Performance_013) Performance_013,
+SUM(Performance_014) Performance_014,
+SUM(Performance_015) Performance_015,
+SUM(Performance_016) Performance_016,
+SUM(Performance_017) Performance_017,
+SUM(Performance_018) Performance_018,
+SUM(Performance_019) Performance_019,
+SUM(Performance_020) Performance_020,
+SUM(Performance_021) Performance_021,
+SUM(Performance_022) Performance_022,
+SUM(Performance_023) Performance_023,
+SUM(Performance_024) Performance_024,
+SUM(Performance_025) Performance_025,
+SUM(Performance_026) Performance_026,
+SUM(Performance_027) Performance_027,
+SUM(Performance_028) Performance_028,
+SUM(Performance_029) Performance_029,
+SUM(Performance_030) Performance_030,
+SUM(Performance_031) Performance_031,
+SUM(Performance_032) Performance_032,
+SUM(Performance_033) Performance_033
+  from Performance_Score score where USER_NAME  in (
+select name from dbo.Users
+) and  StartDate >='{0}' and  EndDate<='{1}'
+group by user_name";
+
+
+    restsql = string.Format(restsql, start, end);
+    System.Data.DataTable dt_Performance = new Data.MSSQL.DBHelper().GetDataTable(restsql);
+
+    string factorsql = @"select * from dbo.Factor_List";
+    System.Data.DataTable dt_Factor = new Data.MSSQL.DBHelper().GetDataTable(factorsql);
+
+    System.Data.DataTable newdt = new System.Data.DataTable();
+
+    string matchsql = @"select * from  dbo.PerformanceMatchUserList";
+    System.Data.DataTable dt_Match = new Data.MSSQL.DBHelper().GetDataTable(matchsql);
+
+    //string injurysql = @"select * from  dbo.InjuryTotal where addtime>='{0}' and addtime<='{1}'";
+    //injurysql = string.Format(injurysql, Request.Form["starttime"], Request.Form["endtime"]);
+    //System.Data.DataTable dt_Injurysql = new Data.MSSQL.DBHelper().GetDataTable(injurysql);
+
+    string hugehelppoorsql = @"select * from  dbo.HelpPoor where HelpPoorDate>='{0}' and HelpPoorDate<='{1}' and StreetAccount>=3000";
+    hugehelppoorsql = string.Format(hugehelppoorsql, Request.Form["starttime"], Request.Form["endtime"]);
+    System.Data.DataTable dt_hugehelppoorsql = new Data.MSSQL.DBHelper().GetDataTable(hugehelppoorsql);
+
+
+    string smallhelppoorsql = @"select * from  dbo.HelpPoor where HelpPoorDate>='{0}' and HelpPoorDate<='{1}' and StreetAccount<3000";
+    smallhelppoorsql = string.Format(smallhelppoorsql, Request.Form["starttime"], Request.Form["endtime"]);
+    System.Data.DataTable dt_smallhelppoorsql = new Data.MSSQL.DBHelper().GetDataTable(smallhelppoorsql);
+
+
+    //手工录入效绩考核
+    string PerformanceAttech = @"select Item_name,User_name,sum(Num) Num from (select * from  dbo.PerformanceAttechItemList where AddTime>='{0}' and AddTime<='{1}') PerformanceAttechItemList group by Item_name,User_name ";
+    PerformanceAttech = string.Format(PerformanceAttech, Request.Form["starttime"], Request.Form["endtime"]);
+    System.Data.DataTable dt_PerformanceAttech = new Data.MSSQL.DBHelper().GetDataTable(PerformanceAttech);
+
+
+    List<Data.Model.ReceiveReports> taskList = new List<Data.Model.ReceiveReports>();
+    Business.Platform.Reports breports = new Business.Platform.Reports();
+
+
+    taskList = breports.GetReceiveReportAllPara(Request.Form["starttime"], Request.Form["endtime"]);
+    double totalFresequence = 0;
+
+    foreach (var receivereports in taskList)
+    {
+        totalFresequence = totalFresequence + receivereports.Fresequence;
+    }
+
+
+
+
+
+
+
+    //newdt = dt_rest.Clone();
+    string dateloop = string.Empty;
+
+    double total = 0;
+
+    double total_042 = 0;
+    double total_043 = 0;
+    double total_044 = 0;
+
+
+}
+
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/EChart/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript" src="../../Scripts/FlowRun/common.js"></script>
+
+<script type="text/javascript" src="../../js/EChart/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/EChart/echarts.js"></script>
+<script type="text/javascript" src="../../js/EChart/jQuery.print.js"></script>
+
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+
+
+    var query = '@ViewBag.Query';
+
+
+
+
+
+    function method2(tableid) {
+
+        var curTbl = document.getElementById(tableid);
+
+        var oXL = new ActiveXObject("Excel.Application");
+        var oWB = oXL.Workbooks.Add();
+        var oSheet = oWB.ActiveSheet;
+        var Lenr = curTbl.rows.length;
+        for (i = 0; i < Lenr; i++) {
+
+            var Lenc = curTbl.rows(i).cells.length;
+            var tem = 0;
+            for (j = 0; j < Lenc; j++) {
+
+                var colspan = curTbl.rows(i).cells(j).getAttribute("colspan");
+                if (colspan > 1) {
+
+                    tem = tem + 1;
+
+                    oSheet.Range(oSheet.cells(i + 1, j + tem), oSheet.cells(i + 1, j + tem + 1)).select();
+                    // oSheet.Range(oSheet.cells(i + 1, j+colspan-1), oSheet.cells(i + 1, j + colspan)).Select;
+                    oXL.Selection.HorizontalAlignment = 3;
+                    oXL.Selection
+                    oXL.Selection.MergeCells = true;
+                    oSheet.cells(i + 1, j + tem).value = curTbl.rows(i).cells(j).innerText;
+                    //tem = colspan - 1;
+                    continue;
+                }
+                else {
+                    oSheet.Cells(i + 1, j + 1).value = curTbl.rows(i).cells(j).innerText;
+
+                }
+
+
+            }
+        }
+
+        oXL.Visible = true;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<body>
+
+
+
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 报表模块 >> 绩效考核报表</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="../../manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+                <div class="clearboth"></div>
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+
+
+                    <!-- 模块 -->
+
+
+                    <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                        <tr style="border-style:solid;border-width:1px;">
+                            <td>
+
+                                开始时间：<input type="text" name="starttime" id="starttime" value="@ViewBag.starttime" class="mycalendar">至
+                                结束时间：<input type="text" name="endtime" id="endtime" value="@ViewBag.endtime" class="mycalendar">
+
+                                <input type="submit" value="查询" name="Save">
+                                <input type="submit" value="导出" name="Import" onclick="method2('tableid')">
+
+                                <button class="print-link no-print" onclick="printit()">打印</button>
+                                <div id="main" style="width: 600px; height: 700px;"></div>
+                                <div id="putImg"></div>
+
+                                <div id="totalchart" style="width: 600px; height: 1200px;"></div>
+
+                                <div id="top" style="width: 1200px; height: 700px;">
+
+
+                                </div>
+
+
+                                <div id="form_body_div" class="tabs_wrapper" style="visibility:hidden;">
+                                    <div class="tabs_main" align="left">
+                                        <div id="PanelConfig">
+                                            <div id="PanelDefault">
+                                                <span style="font:bold 15px 黑体,vendana;">
+                                                    闵行医保绩效考核报表
+                                                </span><br>
+                                                （日期：@dt_First.ToShortDateString()------------@dt_Last.ToShortDateString()）
+                                                <table class="table" id="tableid">
+
+                                                    <thead>
+
+
+                                                        <tr>
+                                                            <td style="border: 1px solid black; width: 10px">序号</td>
+                                                            <td style="border:1px solid black; width:5.5%">开始年月</td>
+                                                            <td style="border:1px solid black; width:5.5%">结束年月</td>
+                                                            <td style="border:1px solid black; width:5.5%">操作人姓名</td>
+                                                            @for (int i = 0; i < dt_Factor.Rows.Count; i++)
+                                                            {
+
+                                                                <td style="border:1px solid black; width:5.5%">@dt_Factor.Rows[i]["Factor_Name"].ToString()</td>
+                                                            }
+                                                            <td style="border:1px solid black; width:5.5%">总计</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @for (int j = 0; j < dt_Performance.Rows.Count; j++)
+                                                        {
+                                                            total = 0;
+                                                            //  k = k + 1;
+
+                                                            <tr style="border:1px solid black;">
+                                                                <td style="border: 1px solid black; width: 10px">@(j + 1)</td>
+                                                                <td style="border: 1px solid black; width: 5.5%">@dt_Performance.Rows[j]["StartDate"].ToString().Trim()</td>
+                                                                <td style="border: 1px solid black; width: 5.5%">@dt_Performance.Rows[j]["EndDate"].ToString().Trim()</td>
+                                                                <td style="border: 1px solid black; width: 5.5%" id="uname">@dt_Performance.Rows[j]["User_Name"].ToString().Trim()</td>
+                                                                @for (int k = 0; k < dt_Factor.Rows.Count; k++)
+                                                                {
+
+                                                                    string per_name = "00" + (k + 1).ToString();
+                                                                    per_name = "Performance_" + per_name.Right(3);
+                                                                    if (k + 1 > dt_Performance.Columns.Count - 6)
+                                                                    {
+
+                                                                        double result = 0;
+                                                                        switch (per_name)
+                                                                        {
+                                                                            //case "Performance_033":
+                                                                            //    System.Data.DataRow[] datarows = dt_Injurysql.Select("UserName= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "'");
+                                                                            //    if (datarows.Length > 0)
+                                                                            //    {
+
+                                                                            //        result = datarows[0]["num"].ToString().ToDouble();
+                                                                            //        result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                            //    }
+                                                                            //    break;
+
+
+                                                                            case "Performance_038":
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "邓竹君")
+                                                                                {
+                                                                                    result = totalFresequence * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_034":
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "黄伟")
+                                                                                {
+                                                                                    result = dt_hugehelppoorsql.Rows.Count * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_035":
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "黄伟")
+                                                                                {
+                                                                                    result = dt_smallhelppoorsql.Rows.Count * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_044":
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "顾品龙")
+                                                                                {
+                                                                                    for (int subi = 0; subi < dt_Performance.Rows.Count; subi++)
+                                                                                    {
+                                                                                        total_044 = total_044 + dt_Performance.Rows[subi]["Performance_019"].ToString().Trim().ToDouble();
+                                                                                    }
+
+
+                                                                                    result = total_044 * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+
+
+
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_043":
+
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "唐宁" || dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "诸李斌")
+                                                                                {
+                                                                                    result = dt_Performance.Rows[j]["Performance_023"].ToString().Trim().ToDouble() * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+                                                                                //if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "唐宁")
+                                                                                //        {
+                                                                                //    for (int subi = 0; subi < dt_Performance.Rows.Count;subi++ )
+                                                                                //    {
+                                                                                //        total_043 = total_043 + dt_Performance.Rows[subi]["Performance_022"].ToString().Trim().ToDouble();
+                                                                                //    }
+
+
+
+                                                                                //            result = total_043 * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+
+
+
+                                                                                //}
+
+
+                                                                                break;
+
+                                                                            case "Performance_042":
+
+                                                                                if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "顾品龙")
+                                                                                {
+                                                                                    for (int subi = 0; subi < dt_Performance.Rows.Count; subi++)
+                                                                                    {
+
+                                                                                        total_042 = total_042 + dt_Performance.Rows[subi]["Performance_016"].ToString().Trim().ToDouble();
+                                                                                    }
+
+
+                                                                                    result = total_042 * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+
+
+
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_033":
+                                                                                System.Data.DataRow[] dataPer33rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer33rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer33rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+
+                                                                                break;
+                                                                            case "Performance_039":
+                                                                                System.Data.DataRow[] dataPerrows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPerrows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPerrows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+
+                                                                                break;
+
+                                                                            case "Performance_040":
+
+                                                                                System.Data.DataRow[] dataPer41rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer41rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer41rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_041":
+
+                                                                                System.Data.DataRow[] dataPer42rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer42rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer42rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_045":
+
+                                                                                System.Data.DataRow[] dataPer46rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer46rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer46rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_046":
+
+                                                                                System.Data.DataRow[] dataPer47rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer47rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer47rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_047":
+
+                                                                                System.Data.DataRow[] dataPer48rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer48rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer48rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_048":
+
+                                                                                System.Data.DataRow[] dataPer49rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer49rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer49rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_049":
+
+                                                                                System.Data.DataRow[] dataPer50rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer50rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer50rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_050":
+
+                                                                                System.Data.DataRow[] dataPer51rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer51rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer51rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_051":
+
+                                                                                System.Data.DataRow[] dataPer52rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer52rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer52rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+                                                                            case "Performance_052":
+
+                                                                                System.Data.DataRow[] dataPer53rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer53rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer53rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            case "Performance_053":
+
+                                                                                System.Data.DataRow[] dataPer54rows = dt_PerformanceAttech.Select("User_name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and Item_name='" + dt_Factor.Rows[k]["Factor_Name"].ToString() + "'");
+                                                                                if (dataPer54rows.Length > 0)
+                                                                                {
+
+                                                                                    result = dataPer54rows[0]["num"].ToString().ToDouble();
+                                                                                    result = result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble();
+                                                                                }
+
+
+                                                                                break;
+
+                                                                            default:
+                                                                                break;
+
+                                                                        }
+
+
+                                                                        <td style="border: 1px solid black; width: 5.5%" id="result">@result</td>
+
+
+                                                                        total = total + result;
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        /*如是该项是配对人员项目则再加上配对人员的数据后再乘以系数*/
+
+
+                                                                        double result = 0;
+
+                                                                        System.Data.DataRow[] datarows = dt_Match.Select("User_Name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and  Factor_Code='" + per_name.ToString().Trim() + "'");
+
+                                                                        System.Data.DataRow[] Matchdatarows = dt_Match.Select("Match_Name= '" + dt_Performance.Rows[j]["User_Name"].ToString().Trim() + "' and  Factor_Code='" + per_name.ToString().Trim() + "'");
+
+                                                                        if (datarows.Length > 0)
+                                                                        {
+                                                                            if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "王珏")
+                                                                            {
+                                                                                string aa = "";
+                                                                            }
+                                                                            System.Data.DataRow[] scoredatarows = dt_Performance.Select("User_Name= '" + datarows[0]["Match_Name"].ToString().Trim() + "'");
+                                                                            if (scoredatarows.Length > 0)
+                                                                            {
+                                                                                switch (per_name)
+                                                                                {
+                                                                                    case "Performance_027":
+
+                                                                                        if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "刘振巍")
+                                                                                        {
+                                                                                            result = dt_Performance.Rows[j][per_name].ToString().Trim().ToDouble() + scoredatarows[0][per_name].ToString().Trim().ToDouble() * 0.2;
+
+                                                                                            //result = dt_Performance.Rows[j][per_name].ToString().Trim().ToDouble() + scoredatarows[0][per_name].ToString().Trim().ToDouble();
+                                                                                        }
+
+
+                                                                                        break;
+                                                                                    default:
+                                                                                        result = dt_Performance.Rows[j][per_name].ToString().Trim().ToDouble() + scoredatarows[0][per_name].ToString().Trim().ToDouble();
+                                                                                        break;
+                                                                                }
+
+
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            switch (per_name)
+                                                                            {
+                                                                                case "Performance_024":
+                                                                                    if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "邓竹君")
+                                                                                    {
+                                                                                        result = dt_hugehelppoorsql.Rows.Count;
+                                                                                    }
+                                                                                    break;
+                                                                                case "Performance_025":
+                                                                                    if (dt_Performance.Rows[j]["User_Name"].ToString().Trim() == "邓竹君")
+                                                                                    {
+                                                                                        result = dt_smallhelppoorsql.Rows.Count;
+
+                                                                                    }
+                                                                                    break;
+
+                                                                                default:
+                                                                                    result = dt_Performance.Rows[j][per_name].ToString().Trim().ToDouble();
+                                                                                    break;
+
+                                                                            }
+
+
+
+
+
+                                                                        }
+
+
+
+
+
+                                                                        if (Matchdatarows.Length > 0)
+                                                                        {
+
+                                                                            System.Data.DataRow[] scoredatarows = dt_Performance.Select("User_Name= '" + Matchdatarows[0]["Match_Name"].ToString().Trim() + "'");
+                                                                            if (scoredatarows != null)
+                                                                            {
+
+                                                                                result = 0;
+
+                                                                            }
+                                                                        }
+
+                                                                        total = total + (result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble());
+                                                                        <td style="border: 1px solid black; width: 5.5%">@(result * dt_Factor.Rows[k]["Factor_Values"].ToString().ToDouble())</td>
+                                                                    }
+
+
+
+                                                                }
+
+                                                                <td style="border: 1px solid black; width: 5.5%">@total</td>
+
+                                                            </tr>
+
+                                                        }
+
+
+
+
+
+
+
+
+                                                    </tbody>
+
+                                                </table>
+
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 模块 -->
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+
+
+        //-------------------------------------------------------
+        ///工作量汇总计划
+
+
+
+
+        var tableId = document.getElementById("tableid");
+        var uname = {};
+        var result = {};
+
+        var arryname = [];
+        var arryresult = [];
+
+
+        for (var i = 1; i < tableId.rows.length; i++) {
+
+            arryname.push(tableId.rows[i].cells[3].innerHTML);
+            arryresult.push(tableId.rows[i].cells[tableId.rows[i].cells.length - 1].innerHTML);
+
+        }
+
+        uname = eval(arryname);
+        result = eval(arryresult);
+
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        option = {
+            title: {
+                text: '工作量总计',
+                subtext: document.getElementById('starttime').value
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            legend: {
+                data: ['工作量']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                data: result
+            },
+            yAxis: {
+                type: 'category',
+                data: uname
+            },
+            series: [
+                {
+                    name: '工作量',
+                    type: 'bar',
+                    data: result,
+                    itemStyle: {
+                        normal: { color: '#cc6600', label: { show: true, position: 'right' } }
+                    },
+                    data: result
+
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+        function printit() {
+
+            printCanvas();
+
+
+            document.all.WebBrowser.ExecWB(6, 1);
+        }
+
+        function printCanvas() {
+
+
+
+            var url = $("canvas")[0].toDataURL('image/png');
+            var img = '<img src="' + url + '" id="imgCanvas"/>';
+            var url1 = $("canvas")[1].toDataURL('image/png');
+            var img1 = '<img src="' + url1 + '" id="imgCanvas"/>';
+            document.write('<object id="WebBrowser" classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" height="0"   width="0"></object> <img src="' + url + '"/>  <img src="' + url1 + '"/>');
+        }
+
+        //-------------------------------------------------------
+
+
+
+
+        //-------------------------------------------------------
+        ///业务类别汇总
+
+
+
+        var utype = {};
+        var tresult = {};
+
+        var arryutype = [];
+        var arrytresult = [];
+        //debugger;
+
+        for (var i = 0; i < tableId.rows.length; i++) {
+            if (i == 0) {
+                for (var j = 4; j < tableId.rows[0].cells.length - 1; j++) {
+                    arryutype.push(tableId.rows[i].cells[j].innerHTML);
+                    arrytresult[j - 4] = 0;
+                }
+
+            }
+            else {
+                // debugger;
+                for (var j = 4; j < tableId.rows[i].cells.length - 1; j++) {
+
+                    arrytresult[j - 4] = parseFloat(arrytresult[j - 4]) + parseFloat(tableId.rows[i].cells[j].innerText.trim());
+                    //debugger;
+                }
+
+
+            }
+
+
+
+        }
+
+        utype = eval(arryutype);
+        tresult = eval(arrytresult);
+        // debugger;
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('totalchart'));
+
+        // 指定图表的配置项和数据
+        option = {
+            title: {
+                text: '业务类别汇总',
+                subtext: document.getElementById('starttime').value
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            legend: {
+                data: ['业务类别量']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                data: tresult
+            },
+            yAxis: {
+                type: 'category',
+                data: utype
+            },
+            series: [
+                {
+                    name: '业务类别量',
+                    type: 'bar',
+                    data: tresult,
+                    itemStyle: {
+                        normal: { color: '#cc6600', label: { show: true, position: 'right' } }
+                    }
+
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        $(function () {
+        })
+
+
+        //-------------------------------------------------------
+
+    </script>
+
+
+
+</body>
+
+
+
+

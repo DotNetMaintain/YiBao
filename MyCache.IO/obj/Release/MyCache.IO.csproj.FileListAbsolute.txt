@@ -1,0 +1,33 @@
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.IO.dll
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.IO.pdb
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.Factory.dll
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.InProc.dll
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.Factory.pdb
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.IO\bin\Release\MyCache.InProc.pdb
+E:\source\OA\OA\MyCache.IO\obj\Release\MyCache.IO.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\MyCache.IO\obj\Release\MyCache.IO.dll
+E:\source\OA\OA\MyCache.IO\obj\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.IO\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.IO\obj\Release\MyCache.IO.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.IO\obj\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 副本\MyCache.IO\obj\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\obj\Release\MyCache.IO.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\obj\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.IO\obj\Release\MyCache.IO.pdb

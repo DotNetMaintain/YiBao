@@ -1,0 +1,39 @@
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.MSSQL.dll
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.MSSQL.pdb
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.Interface.dll
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.Model.dll
+E:\source\OA\OA\Data.MSSQL\bin\Release\Utility.dll
+E:\source\OA\OA\Data.MSSQL\bin\Release\LitJSON.dll
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.Interface.pdb
+E:\source\OA\OA\Data.MSSQL\bin\Release\Data.Model.pdb
+E:\source\OA\OA\Data.MSSQL\bin\Release\Utility.pdb
+E:\source\OA\OA\Data.MSSQL\bin\Release\LitJSON.pdb
+E:\source\OA\OA\Data.MSSQL\obj\Release\Data.MSSQL.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\Data.MSSQL\obj\Release\Data.MSSQL.dll
+E:\source\OA\OA\Data.MSSQL\obj\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.Interface.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Utility.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\LitJSON.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.Interface.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\Utility.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\bin\Release\LitJSON.pdb
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\obj\Release\Data.MSSQL.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\obj\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 副本\Data.MSSQL\obj\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Utility.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\LitJSON.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\Utility.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\bin\Release\LitJSON.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\obj\Release\Data.MSSQL.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\obj\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.MSSQL\obj\Release\Data.MSSQL.pdb

@@ -1,0 +1,168 @@
+﻿@{
+    Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+    Business.Platform.Users BUsers = new Business.Platform.Users();
+    string query = string.Format("appid={0}&tabid={1}", Request.QueryString["appid"], Request.QueryString["tabid"]);
+    string sql = string.Empty;
+    string starttime = string.Empty;
+    string endtime = string.Empty;
+
+    if (Request.Form["starttime"] == null)
+    {
+        sql = "SELECT * FROM dbo.ScrapCard";
+    }
+    else
+    {
+        starttime = Request.Form["starttime"].ToString();
+        endtime = Request.Form["endtime"].ToString();
+        if (!string.IsNullOrEmpty(starttime))
+        {
+            sql = "SELECT * FROM dbo.ScrapCard where AddDateTime>='{0}' and AddDateTime<='{1}'";
+            sql = string.Format(sql, starttime, endtime);
+        }
+
+    }
+
+
+   
+    
+    string id = Request.QueryString["instanceid"];
+    string title = string.Empty;
+    string contents = string.Empty;
+    //  string sql = "SELECT * FROM dbo.EffectTimer";
+
+    System.Data.DataTable dtfull = new Data.MSSQL.DBHelper().GetDataTable(sql);
+    
+
+
+    System.Data.DataTable dt = new System.Data.DataTable();
+    
+    
+    if (dt.Rows.Count > 5)
+    {
+
+        System.Data.DataRow[] rows = dt.Select("1=1");
+        for (int i = 0; i < 5; i++)
+        {
+            dt.ImportRow((System.Data.DataRow)rows[i]);
+        }
+    }
+    else
+    {
+        dt = dtfull;
+    }
+
+    System.Data.DataView dv = dt.DefaultView;
+    System.Data.DataView dvfind = dv;
+    
+    //if (id.IsInt())
+    //{
+    //    string sql = "SELECT * FROM dbo.EffectTimer WHERE ID=" + id;
+    //    System.Data.DataTable dt = new Data.MSSQL.DBHelper().GetDataTable(sql);
+    //    if (dt.Rows.Count > 0)
+    //    {
+    //        title = dt.Rows[0]["Title"].ToString();
+    //        contents = dt.Rows[0]["Contents"].ToString();
+    //    }
+    //}
+}
+<br /><br /><br />
+<!--任务标题字段-->
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript" src="../../Scripts/FlowRun/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+
+    var iframeid = '@Request.QueryString["tabid"]';
+
+    var appid = '@Request.QueryString["appid"]';
+
+
+    var query = '@Html.Raw(query)';
+</script>
+
+
+<div class="toolbar" style="margin-top:0; border-top:none 0; position:fixed; top:0; left:0; right:0; margin-left:auto; z-index:999; width:100%; margin-right:auto; height:26px;">
+    <div>
+
+        <a href="#" onclick="fun_29b358e1ad644f09846c4554ae6b85c4();return false;" title="打印当前表单">
+            <span style="background:url(/Images/ico/printer.gif) no-repeat left center;">打印</span>
+        </a>
+        <script type="text/javascript">
+            function fun_29b358e1ad644f09846c4554ae6b85c4() { formPrint(); }
+        </script>
+
+    </div>
+</div>
+<form id="form1" action="" method="post">
+    @Html.AntiForgeryToken()
+    <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                开始时间：<input type="text" name="starttime" id="starttime" value="@ViewBag.starttime" class="mycalendar">至
+                结束时间：<input type="text" name="endtime" id="endtime" value="@ViewBag.endtime" class="mycalendar">
+
+                <input type="submit" value="查询" name="Save">
+                <input type="submit" value="导出" name="Import">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<div style="text-align:center; font-size:24px; font-weight:bold;">报废卡明细查询</div>
+<div style="width:100%; text-align:center; margin: 0 auto; ">
+    （日期：@ViewBag.starttime------------@ViewBag.endtime）
+</div>
+</div>
+<div id="form_body_div" class="tabs_wrapper">
+
+    <table cellpadding="0" cellspacing="1" border="0" width="99%" class="table" align="center">
+
+
+        <tr>
+
+            <th style="width: 10%; text-align: center; border: 1px solid black;">
+                报废卡人员姓名
+            </th>
+            <th style="width: 10%; text-align: center; border: 1px solid black;">
+                报废卡类型
+            </th>
+            <th style="width: 15%; text-align: center; border: 1px solid black;">
+                报废卡卡号
+            </th>
+            <th style="width: 15%; text-align: center; border: 1px solid black;">
+                报废时间
+            </th>
+            <th style="width: 20%; text-align: center; border: 1px solid black;">
+                报废原因
+            </th>
+            <th style="width: 30%; text-align: center; border: 1px solid black;">
+                备注
+            </th>
+           
+        </tr>
+
+
+        @{
+           for(int i=0;i<dv.Count;i++)
+           {
+               <tr>
+                   <td style="width: 10%; text-align: center; border: 1px solid black;">@dv[i]["Scrapname"].ToString()</td>
+                   <td style="width: 10%; text-align: center; border: 1px solid black;">@BDictionary.Get(dv[i]["Type"].ToString().ToGuid()).Title</td>
+                   <td style="width: 15%; text-align: center; border: 1px solid black;">@dv[i]["CardID"].ToString()</td>
+                   <td style="width: 15%; text-align: center; border: 1px solid black;">@dv[i]["AddDateTime"].ToString()</td>
+                   <td style="width: 20%; text-align: center; border: 1px solid black;">@BDictionary.Get(dv[i]["Reason"].ToString().ToGuid()).Title</td>
+                   <td style="width: 30%; text-align: center; border: 1px solid black;">@dv[i]["Remark"].ToString()</td>
+              </tr>
+               
+           }
+           
+
+        }
+
+
+    </table>
+</div>

@@ -1,0 +1,15 @@
+E:\source\OA\OA\Data.Model\bin\Release\Data.Model.dll
+E:\source\OA\OA\Data.Model\bin\Release\Data.Model.pdb
+E:\source\OA\OA\Data.Model\obj\Release\Data.Model.dll
+E:\source\OA\OA\Data.Model\obj\Release\Data.Model.pdb
+E:\source\OA\OA\Data.Model\obj\Release\Data.Model.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\Data.Model\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 副本\Data.Model\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 副本\Data.Model\obj\Release\Data.Model.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\Data.Model\obj\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 副本\Data.Model\obj\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Model\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Model\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 可发布版本\Data.Model\obj\Release\Data.Model.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\Data.Model\obj\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 可发布版本\Data.Model\obj\Release\Data.Model.pdb

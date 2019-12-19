@@ -1,0 +1,246 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "工伤委托审核列表";
+    Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+
+
+
+
+    string sql = @"select * from IndustrialInjury where 1=1 ";
+
+    if (!Request.Form["Search"].IsNullOrEmpty())
+    {
+        ViewBag.BeginDate = Request.Form["BeginDate"];
+        ViewBag.EndDate = Request.Form["EndDate"];
+
+
+        if (!string.IsNullOrEmpty(ViewBag.BeginDate))
+        {
+            sql = sql + " and AcceptDate>='{0}'";
+        }
+
+        if (!string.IsNullOrEmpty(ViewBag.EndDate))
+        {
+            sql = sql + " and AcceptDate<='{1}'";
+        }
+
+        sql = string.Format(sql, ViewBag.BeginDate, ViewBag.EndDate);
+    }
+
+
+
+    Int32 totalnum = 0;
+    Int32 dealnum1 = 0;
+    Int32 dealnum2 = 0;
+    Int32 dealnum3 = 0;
+    Int32 dealnum4 = 0;
+    Int32 returnnum = 0;
+    Int32 acctnum = 0;
+    Int32 unacctnum = 0;
+    
+
+    System.Data.DataTable dt = new Data.MSSQL.DBHelper().GetDataTable(sql);
+
+}
+
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+</script>
+<body>
+
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 检索 >> 工伤委托审核列表</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="../../manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td>开始时间</td>
+                                <td><input name="BeginDate" type="text" id="BeginDate" style="width:250px;" value="@Html.Raw(ViewBag.BeginDate)" class="mycalendar" /></td>
+                                <td>结束时间</td>
+                                <td><input name="EndDate" type="text" id="EndDate" style="width:250px;" value="@Html.Raw(ViewBag.EndDate)" class="mycalendar" /></td>
+
+                                <td><input type="submit" name="Search" class="button" value='查询' /></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <!-- 模块 -->
+
+                    <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+
+                                <div id="config_basic1" class="tabs_wrapper">
+                                    <div class="tabs_main" align="left">
+                                        <div id="PanelConfig">
+
+                                            <div id="PanelDefault">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <td>接收日期</td>
+                                                            <td>工伤份数</td>
+                                                            <td>合计</td>
+                                                            <td>唐宁</td>
+                                                            <td>黄伟</td>
+                                                            <td>张玉婷</td>
+                                                            <td>诸李斌</td>
+                                                            <td>当场返回</td>
+                                                            <td>完成日期</td>
+                                                            <td>交接日期</td>
+                                                            <td>部分已交接</td>
+                                                            <td>余下未交接</td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                           @for(int i=0;i<dt.Rows.Count ;i++)
+                                                           {
+                                                               
+                                                               
+                                                            <tr>
+                                                                <td width="120">@Convert.ToDateTime(dt.Rows[i]["AcceptDate"].ToString()).ToShortDateString()</td>
+                                                                <td width="120">@dt.Rows[i]["AcceptQua1"].ToString()+@dt.Rows[i]["AcceptQua1"].ToString()+@dt.Rows[i]["AcceptQua1"].ToString()</td>
+                                                                <td width="120">@(Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString())+@Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString())+@Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString()))</td>
+                                                                <td width="120">@dt.Rows[i]["dealQua1"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["dealQua2"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["dealQua3"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["dealQua4"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["returnQua"].ToString()</td>
+                                                                <td width="120">@Convert.ToDateTime(dt.Rows[i]["FinishedDatetime"].ToString()).ToShortDateString()</td>
+                                                                <td width="120">@Convert.ToDateTime(dt.Rows[i]["ConnectDatetime"].ToString()).ToShortDateString()</td>
+                                                                <td width="120">@dt.Rows[i]["FinishedQua"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["UnfinishedQua"].ToString()</td>
+                                                                <td width="120">@dt.Rows[i]["Remark"].ToString()</td>
+
+                                                            </tr>
+                                                               
+                                                               string dealqua1 = dt.Rows[i]["dealQua1"].ToString();
+                                                               if (string.IsNullOrEmpty(dealqua1))
+                                                               {
+                                                                   dealqua1 = "0";
+                                                               }
+                                                               
+                                                               string dealqua2 = dt.Rows[i]["dealQua2"].ToString();
+                                                               if (string.IsNullOrEmpty(dealqua2))
+                                                               {
+                                                                   dealqua2 = "0";
+                                                               }
+
+                                                               string dealqua3 = dt.Rows[i]["dealQua3"].ToString();
+                                                               if (string.IsNullOrEmpty(dealqua3))
+                                                               {
+                                                                   dealqua3 = "0";
+                                                               }
+
+                                                               string dealqua4 = dt.Rows[i]["dealQua4"].ToString();
+                                                               if (string.IsNullOrEmpty(dealqua4))
+                                                               {
+                                                                   dealqua4 = "0";
+                                                               }
+
+
+
+                                                               string returnQua = dt.Rows[i]["returnQua"].ToString();
+                                                               if (string.IsNullOrEmpty(returnQua))
+                                                               {
+                                                                   returnQua = "0";
+                                                               }
+
+
+
+                                                               string FinishedQua = dt.Rows[i]["FinishedQua"].ToString();
+                                                               if (string.IsNullOrEmpty(FinishedQua))
+                                                               {
+                                                                   FinishedQua = "0";
+                                                               }
+
+                                                               string UnfinishedQua = dt.Rows[i]["UnfinishedQua"].ToString();
+                                                               if (string.IsNullOrEmpty(UnfinishedQua))
+                                                               {
+                                                                   UnfinishedQua = "0";
+                                                               }
+                                                               
+                                                               
+                                                               totalnum =totalnum+(Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString())+Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString())+Convert.ToInt32(dt.Rows[i]["AcceptQua1"].ToString()));
+                                                               dealnum1 = dealnum1 + Convert.ToInt32(dealqua1);
+                                                               dealnum2 = dealnum2 + Convert.ToInt32(dealqua2);
+                                                               dealnum3 = dealnum3 + Convert.ToInt32(dealqua3);
+                                                               dealnum4 = dealnum4 + Convert.ToInt32(dealqua4);
+                                                               returnnum = returnnum + Convert.ToInt32(returnQua);
+                                                               acctnum = acctnum + Convert.ToInt32(FinishedQua);
+                                                               unacctnum = unacctnum + Convert.ToInt32(UnfinishedQua);
+    
+                                                               
+                                                        }
+                                                        <tr>
+                                                            <td colspan="2">合计</td>
+                                                            <td>@totalnum</td>
+                                                            <td>@dealnum1</td>
+                                                            <td>@dealnum2</td>
+                                                            <td>@dealnum3</td>
+                                                            <td>@dealnum4</td>
+                                                            <td>@returnnum</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            
+                                                            <td>@acctnum</td>
+                                                            <td>@unacctnum</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table">
+                                                    <tr>
+                                                        <td class="page">
+                                                            <span style="float:left;" id=num runat=server></span>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<uc1:Page ID="Page1" runat="server" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <br />
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 模块 -->
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+

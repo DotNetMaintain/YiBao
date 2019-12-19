@@ -1,0 +1,37 @@
+﻿@{
+	string FlowID = Request.QueryString["flowid"];
+	string StepID = Request.QueryString["stepid"];
+	string GroupID = Request.QueryString["groupid"];
+	string TaskID = Request.QueryString["taskid"];
+	string InstanceID = Request.QueryString["instanceid"];
+	string DisplayModel = Request.QueryString["display"] ?? "0";
+	string DBConnID = "06075250-30dc-4d32-bf97-e922cb30fac8";
+	string DBTable = "ReturnDocument";
+	string DBTablePK = "ID";
+	string DBTableTitle = "Title";
+	Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+	Business.Platform.WorkFlow BWorkFlow = new Business.Platform.WorkFlow();
+	Business.Platform.WorkFlowTask BWorkFlowTask = new Business.Platform.WorkFlowTask();
+	string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+	LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+	string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="ReturnDocument.Title" name="ReturnDocument.Title" value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="ReturnDocument.Title" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="06075250-30dc-4d32-bf97-e922cb30fac8" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="ReturnDocument" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="Title" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<script type="text/javascript">
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(function (){
+		formrun.initData(initData, "ReturnDocument", fieldStatus, displayModel);
+	});
+</script>
+<p> </p><p> </p><p style="text-align: center;"><span style="font-size: 20px;"></span><span style="font-size: 20px;"><strong>服务点退材料台帐</strong></span></p><p><span style="font-size: 20px;"></span><br/></p><table class="flowformtable" cellspacing="1" cellpadding="0" data-sort="sortDisabled"><tbody><tr class="firstRow"><td width="134" valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;">申请人<br/></td><td width="372" valign="top" style="border-color: rgb(221, 221, 221);"><input name="ReturnDocument.UserID" title="" class="mymember" id="ReturnDocument.UserID" type="text" value="u_@Business.Platform.Users.CurrentUserID.ToString()" type1="flow_org" more="0" isflow="1" dept="0" station="0" user="1" workgroup="0" unit="0" rootid=""/> </td><td width="136" valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;">部门</td><td width="392" valign="top" style="border-color: rgb(221, 221, 221);"><input name="ReturnDocument.UserDept" title="" class="mymember" id="ReturnDocument.UserDept" type="text" value="@(Business.Platform.Users.CurrentDeptID)" type1="flow_org" more="0" isflow="1" dept="1" station="0" user="0" workgroup="0" unit="0" rootid=""/></td></tr><tr><td width="134" valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;">申请日期<br/></td><td width="372" valign="top" style="border-color: rgb(221, 221, 221);"><input name="ReturnDocument.AddTime" title="" class="mycalendar" id="ReturnDocument.AddTime" type="text" value="@(Utility.DateTimeNew.ShortDate)" defaultvalue="@(Utility.DateTimeNew.ShortDate)" type1="flow_datetime" currentmonth="0" dayafter="0" daybefor="0" istime="1" isflow="1"/> <input name="TempTest_Purchase.Title" id="TempTest_Purchase.Title" type="hidden" value="" type1="flow_hidden"/></td><td width="136" valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;">备注</td><td width="392" valign="top" style="border-color: rgb(221, 221, 221);"><input name="ReturnDocument.Remark" title="" class="mytext" id="ReturnDocument.Remark" type="text" value="" type1="flow_text" valuetype="0" isflow="1"/></td></tr><tr><td width="134" valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;">街道名称</td><td valign="top" style="border-color: rgb(221, 221, 221); -ms-word-break: break-all;" colspan="3"><select name="ReturnDocument.StreetName" class="myselect" id="ReturnDocument.StreetName" type1="flow_select" isflow="1"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("771c1950-8392-4637-ae83-8c284b7150f3".ToGuid(), Business.Platform.Dictionary.OptionValueField.ID, ""))</select></td></tr><tr><td width="134" valign="top" style="border-top-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221);">姓名</td><td width="220" valign="top" style="border-top-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); -ms-word-break: break-all;" colspan="1"><input name="ReturnDocument.ReturnName" title="" class="mytext" id="ReturnDocument.ReturnName" type="text" value="" type1="flow_text" valuetype="0" isflow="1"/></td><td width="136" align="" valign="top" style="border-top-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); -ms-word-break: break-all;" rowspan="1">受理时间</td><td width="392" align="" valign="top" style="border-top-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); -ms-word-break: break-all;" rowspan="1"><input name="ReturnDocument.ReturnDateTime" title="" class="mycalendar" id="ReturnDocument.ReturnDateTime" type="text" value="" defaultvalue="" type1="flow_datetime" currentmonth="0" dayafter="0" daybefor="0" istime="1" isflow="1"/></td></tr><tr><td width="134" valign="top">金额</td><td width="279" valign="top" colspan="1"><input name="ReturnDocument.ReturnAmount" title="" class="mytext" id="ReturnDocument.ReturnAmount" type="text" value="" type1="flow_text" valuetype="2" isflow="1"/></td><td width="136" align="" valign="top" style="-ms-word-break: break-all;" rowspan="1">理由</td><td width="392" align="" valign="top" rowspan="1"><input name="ReturnDocument.Reason" title="" class="mytext" id="ReturnDocument.Reason" type="text" value="" type1="flow_text" valuetype="0" isflow="1"/></td></tr></tbody></table><p> </p><p> </p>

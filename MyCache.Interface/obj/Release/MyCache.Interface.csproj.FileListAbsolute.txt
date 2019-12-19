@@ -1,0 +1,15 @@
+E:\source\OA\OA\MyCache.Interface\bin\Release\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.Interface\bin\Release\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.Interface\obj\Release\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.Interface\obj\Release\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.Interface\obj\Release\MyCache.Interface.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.Interface\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Interface\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Interface\obj\Release\MyCache.Interface.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.Interface\obj\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Interface\obj\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Interface\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Interface\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Interface\obj\Release\MyCache.Interface.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Interface\obj\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Interface\obj\Release\MyCache.Interface.pdb

@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "Print";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>打印表单</title>
+    <link href="~/Scripts/FlowRun/Forms/flowform_print.css" rel="stylesheet" />
+    <style type="text/css" media="print">
+        .Noprint {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="buttondiv" class="Noprint" style="margin-left:20px;">
+        <button onclick="print1();" style="margin-right:6px;">确认打印</button>
+        <button onclick="window.close();">取消关闭</button>
+    </div>
+    <div>
+        <script type="text/javascript">
+            if (window.opener.document.getElementById("printbody"))
+            {
+                document.write(window.opener.document.getElementById("printbody").outerHTML);
+            }
+            else
+            {
+            document.write(window.opener.document.getElementById("form_body_div").outerHTML);
+            }
+            
+        </script>
+    </div>
+    <div id="commentdiv">
+        <script type="text/javascript">
+            document.write(window.opener.document.getElementById("form_commentlist_div").outerHTML);
+        </script>
+    </div>
+
+    <div id="Petition" style="visibility:hidden">
+       <!--<div id="splitpager" style="page-break-before: always; visibility: hidden"></div>--> 
+        <table>
+            <tr>
+                <td align="left" colspan="2">
+                    编号:<span style="text-decoration:underline">
+    <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_VisitCode").value)</script>
+</span>
+                   
+                </td>
+                </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    信访登记告知单
+                </td>
+                </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    （第一联 医保中心留）
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您于<span style="text-decoration:underline">
+    <script>document.write(window.opener.document.getElementById("TempTest_CustomForm_VisitDate").value)</script></span>闵行区医保中心             费用报销
+</td>
+            </tr>
+            <tr>
+                <td>
+                    委托人：<span style="text-decoration: underline">
+                            <script>document.write(window.opener.document.getElementById("TempTest_CustomForm_VisitName").value)</script>
+                    </span>
+                      
+                    </td>
+                   <td>                   
+                    身份证号：
+                       <span style="text-decoration:underline">
+                           <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_VisitID").value)</script>
+                           </span>
+</td>
+                </tr>
+                <tr>
+                <td>
+                    参保人：
+                    <span style="text-decoration:underline">
+                        <script style="text-decoration:underline">
+                            var showvisitor;
+                            if (window.opener.document.getElementById("TempTest_CustomForm_OtherName").value == "") {
+                                showvisitor = window.opener.document.getElementById("TempTest_CustomForm_VisitName").value;
+                            }
+                            else {
+                                showvisitor = window.opener.document.getElementById("TempTest_CustomForm_OtherName").value;
+                            }
+                            document.write(showvisitor);
+                            </script>
+                        </span>
+</td>
+                    <td>
+                    身份证号：
+                        <span style="text-decoration:underline">
+                            <script style="text-decoration:underline">
+                                var showvisitorId;
+                                if (window.opener.document.getElementById("TempTest_CustomForm_OtherID").value == "") {
+                                    showvisitorId = window.opener.document.getElementById("TempTest_CustomForm_VisitID").value;
+                                }
+                                else {
+                                    showvisitorId = window.opener.document.getElementById("TempTest_CustomForm_OtherID").value;
+                                }
+                                document.write(showvisitorId);
+                              </script>
+                            </span>
+</td>
+                    </tr>
+                 <tr>
+                    <td>
+                    信访发票张数：
+                        <span style="text-decoration:underline">
+                            <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_VoiceNum").value)</script>
+                            </span>
+</td> 
+            <td> 
+                        收复印件发票张数：
+                <span style="text-decoration:underline">
+                    <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_VoiceCopyNum").value)</script>
+                    </span>
+</td>
+            </tr>
+            <tr>
+            <td colspan="2">
+                    发票金额：
+                <span style="text-decoration:underline">
+                    <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_VoiceAccount").value)</script>
+                    </span>
+</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    现将相关事项告知如下：<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、自登记之日起，经相关审批程序且需10个工作日后进入信访受理及医药费报销流程，预约办理时间为
+                    <span style="text-decoration:underline">
+                        <script style="text-decoration:underline">document.write(window.opener.document.getElementById("TempTest_CustomForm_PreDate").value)</script>
+                        </span>
+                         按时前来办理。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、妥善保管医疗费原始收据及相关资料是参保人员的责任，此次受理报销作为个案一次性办理，今后不再发生类似情况。<br>
+                        注：办理时先在门口取号机上取“个人业务”号，再到16号凭告知单取信访单。
+                        报销时需携带参保人身份证（小孩需携带户籍薄）、医保卡、发票及相关病历、出院小结和明细清单，委托人还需提供委托人身份证，参保人银行卡。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold">是否予以受理及具体报销金额，以医保专业审核和现场结算后为准。</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述告知已知晓，参保人或被委托人签字确认：
+</td>
+           </tr>
+        </table>
+  
+
+    </div>
+
+    <script type="text/javascript">
+        function print1() {
+           // alert(window.opener.document.getElementById("TempTest_CustomForm_VisitCode"));
+            if (window.opener.document.getElementById("TempTest_CustomForm_VisitCode") !=null)
+            {
+                document.write("<div id='splitpager' style='page-break-before: always; visibility: hidden'></div>");
+                document.getElementById("Petition").style.visibility = "visible";
+               // document.getElementById("splitpager").style.visibility = "visible";
+            }
+            
+            window.print();
+
+           
+        }
+    </script>
+</body>
+</html>

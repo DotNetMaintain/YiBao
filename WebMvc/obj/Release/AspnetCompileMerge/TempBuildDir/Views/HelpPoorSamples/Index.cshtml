@@ -1,0 +1,117 @@
+@{
+    Page.CheckApp = false;
+    ViewBag.Title = "帮困外省市贫困补助列表";
+
+   
+}
+@model List<Data.Model.HelpPoorSamples>
+
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+</script>
+<body>
+
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 检索 >> 帮困外省市贫困补助列表</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="../../manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+              
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td>省份</td><td><input name="Province" type="text" id="Province" style="width:250px;" value="@Html.Raw(ViewBag.Province)" /></td>
+                                <td>机构名称</td>
+                                <td><input name="AgentName" type="text" id="AgentName" style="width:250px;" value="@Html.Raw(ViewBag.AgentName)"/></td>
+                                
+                                <td><input type="submit" name="Select" class="button" value='查询' /></td>
+                            </tr>
+
+                        </table>
+                                                        
+</div>
+
+                    <!-- 模块 -->
+
+                    <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+
+                                <div id="config_basic1" class="tabs_wrapper">
+                                    <div class="tabs_main" align="left">
+                                        <div id="PanelConfig">
+
+                                            <div id="PanelDefault">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <td>帮困凭证样张省份</td>
+                                                            <td>帮困凭证样张机构</td>
+                                                            <td width="220">样张文件</td>
+                                                            <td width="175">上传时间</td>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        @foreach (var HelpSampleslist in @Model.OrderByDescending(p=>p.AddTime))
+                                                        {
+                                                            <tr>
+                                                                <td width="120">@HelpSampleslist.Province</td>
+                                                                <td width="120">@HelpSampleslist.AgentName</td>
+                                                                <td width="220">
+                                                                
+                                                                    <a href="@HelpSampleslist.AttechFile" target="_blank"  style="color:blue">@HelpSampleslist.AttechFile.Substring(@HelpSampleslist.AttechFile.LastIndexOf('/') + 1, @HelpSampleslist.AttechFile.LastIndexOf('.') - @HelpSampleslist.AttechFile.LastIndexOf('/') - 1)</a></td>
+                                                                <td width="175">@HelpSampleslist.AddTime</td>
+
+                                                            </tr>
+                                                        }
+
+
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table">
+                                                    <tr>
+                                                        <td class="page">
+                                                            <span style="float:left;" id=num runat=server></span>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<uc1:Page ID="Page1" runat="server" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <br />
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 模块 -->
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>

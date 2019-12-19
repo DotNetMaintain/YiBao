@@ -1,0 +1,95 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "ImportHelpPoor";
+    string query = string.Format("appid={0}&tabid={1}", Request.QueryString["appid"], Request.QueryString["tabid"]);
+    
+}
+
+@model System.Data.DataTable
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript" src="../../Scripts/FlowRun/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+    var query = '@Html.Raw(query)';
+
+    $(function ()
+    {
+         @Html.Raw(ViewBag.Script)
+    });
+
+</script>
+
+    <div>
+
+        <form id="form1" action="" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div>
+
+                开始时间：<input type="text" name="starttime" id="starttime" value=@ViewBag.starttime class="mycalendar">至
+                结束时间：<input type="text" name="endtime" id="endtime" value=@ViewBag.endtime class="mycalendar">
+
+                <input type="submit" value="查询" name="Search">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                帮困数据导入：
+                <input type="file" name="fileName" />
+
+                <input id="UploadFile" name="UploadFile" type="submit" value="导  入" />
+            </div>
+           
+            <div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td style="width:10%; "> 序号</td>
+                            <td style="width:10%; "> 时间</td>
+                            <td style="width:10%; ">街道名称</td>
+                            <td style="width:40%; ">金额</td>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @{
+                        if(Model!=null)
+                        {
+
+                            for (int i = 0; i < Model.Rows.Count;i++ )
+                            {
+                            <tr>
+                                <td style="width:10%; ">@(i+1)</td>
+                                <td style="width:10%; ">@Model.Rows[i][1].ToString()</td>
+                                <td style="width:10%; ">@Model.Rows[i][2].ToString()</td>
+                                <td style="width:40%; ">@Model.Rows[i][3].ToString()</td>
+                               
+
+                            </tr>
+                            }
+                        
+                        }
+                        }    
+                        
+                        
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </form>
+
+            
+
+
+
+</div>
+

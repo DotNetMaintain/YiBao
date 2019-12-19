@@ -1,0 +1,196 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "ImportPerformance";
+    string query = string.Format("appid={0}&tabid={1}", Request.QueryString["appid"], Request.QueryString["tabid"]);
+}
+@model System.Data.DataTable
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript" src="../../Scripts/FlowRun/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+    var query = '@Html.Raw(query)';
+
+    $(function ()
+    {
+         @Html.Raw(ViewBag.Script)
+    });
+</script>
+
+<div>
+
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div>
+
+            开始时间：<input type="text" name="starttime" id="starttime" value=@ViewBag.starttime class="mycalendar">至
+            结束时间：<input type="text" name="endtime" id="endtime" value=@ViewBag.endtime class="mycalendar">
+
+            <input type="submit" value="查询" name="Search">
+           
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            万达绩效数据导入：
+            <input type="file" name="fileName" />
+
+            <input name="info" type="submit" value="导  入" /> <br>
+
+        </div>
+            <!-- 模块 -->
+
+            <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                       
+                        <div id="form_body_div" class="tabs_wrapper">
+                            <div class="tabs_main" align="left">
+                                <div id="PanelConfig">
+                                    <div id="PanelDefault">
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+
+                                                    <td style="border:1px solid black;">序号</td>
+                                                    <td style="border:1px solid black;">开始时间</td>
+                                                    <td style="border:1px solid black;">结束时间</td>
+                                                    <td style="border:1px solid black;">用户姓名</td>
+                                                    <td style="border:1px solid black;">帮困缴退费数量</td>
+                                                    <td style="border:1px solid black;">帮困登记数量</td>
+                                                    <td style="border:1px solid black;">居保零星缴费数量</td>
+                                                    <td style="border:1px solid black;">镇保统筹登记数量</td>
+                                                    <td style="border:1px solid black;">政府网站密码</td>
+                                                    <td style="border:1px solid black;">居保新增数量</td>
+                                                    <td style="border:1px solid black;">镇保统筹补差数量</td>
+                                                    <td style="border:1px solid black;">镇保统筹缴费数量</td>
+                                                    <td style="border:1px solid black;">参保人信息变更数量</td>
+                                                    <td style="border:1px solid black;">就医关系转移数量</td>
+                                                    <td style="border:1px solid black;">制册数量</td>
+                                                    <td style="border:1px solid black;">制卡数量</td>
+                                                    <td style="border:1px solid black;">单位集中报销受理数量</td>
+                                                    <td style="border:1px solid black;">零报结算撤销数量</td>
+                                                    <td style="border:1px solid black;">大额资质审核数量</td>
+                                                    <td style="border:1px solid black;">大额费用审核数量</td>
+                                                    <td style="border:1px solid black;">大额结算数量</td>
+                                                    <td style="border:1px solid black;">后台小额资质审核数量</td>
+                                                    <td style="border:1px solid black;">后台小额费用审核数量</td>
+                                                    <td style="border:1px solid black;">后台小额结算数量</td>
+                                                    <td style="border:1px solid black;">前台小额资质审核数量</td>
+                                                    <td style="border:1px solid black;">前台小额费用审核数量</td>
+                                                    <td style="border:1px solid black;">前台小额结算数量</td>
+                                                    <td style="border:1px solid black;">大额互助帮困结算数量</td>
+                                                    <td style="border:1px solid black;">小额互助帮困结算数量</td>
+                                                    <td style="border:1px solid black;">综合减负数量</td>
+                                                    <td style="border:1px solid black;">账户清算人次</td>
+                                                    <td style="border:1px solid black;">镇保划扣数量</td>
+                                                    <td style="border:1px solid black;">单位集中报销结算数量</td>
+                                                    <td style="border:1px solid black;">大病登记数量</td>
+                                                    <td style="border:1px solid black;">非现金类业务数量</td>
+                                                    <td style="border:1px solid black;">离休业务数量</td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @{
+                                                    if (Model != null)
+                                                    {
+
+
+
+                                                        for (int i = 0; i < Model.Rows.Count; i++)
+                                                        {
+                                                            <tr>
+                                                                <td style="border:1px solid black; width:15%">@(i + 1)</td>
+                                                                <td style="border:1px solid black; width:15%">@Model.Rows[i][1].ToString()</td>
+                                                                <td style="border:1px solid black; width:10%">@Model.Rows[i][2].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][4].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][5].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][6].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][7].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][8].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][9].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][10].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][11].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][12].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][13].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][14].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][15].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][16].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][17].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][18].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][19].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][20].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][21].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][22].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][23].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][24].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][25].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][26].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][27].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][28].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][29].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][30].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][31].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][32].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][33].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][34].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][35].ToString()</td>
+                                                                <td style="border:1px solid black; width:5%">@Model.Rows[i][36].ToString()</td>
+
+
+                                                            </tr>
+
+                                                        }
+
+                                                    }
+
+
+                                                }
+
+                                                <tr>
+                                                    <td colspan="3">合计：</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+
+                                        <table class="table">
+                                            <tr>
+                                                <td class="page">
+                                                    <span style="float:left;" id=num></span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <br />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- 模块 -->
+
+
+</form>
+
+
+
+
+
+</div>
+
+

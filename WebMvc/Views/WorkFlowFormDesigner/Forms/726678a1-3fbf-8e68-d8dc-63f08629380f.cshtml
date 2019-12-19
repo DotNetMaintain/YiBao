@@ -1,0 +1,37 @@
+﻿@{
+	string FlowID = Request.QueryString["flowid"];
+	string StepID = Request.QueryString["stepid"];
+	string GroupID = Request.QueryString["groupid"];
+	string TaskID = Request.QueryString["taskid"];
+	string InstanceID = Request.QueryString["instanceid"];
+	string DisplayModel = Request.QueryString["display"] ?? "0";
+	string DBConnID = "06075250-30dc-4d32-bf97-e922cb30fac8";
+	string DBTable = "Car_Use";
+	string DBTablePK = "id";
+	string DBTableTitle = "Title";
+	Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+	Business.Platform.WorkFlow BWorkFlow = new Business.Platform.WorkFlow();
+	Business.Platform.WorkFlowTask BWorkFlowTask = new Business.Platform.WorkFlowTask();
+	string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+	LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+	string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="Car_Use.Title" name="Car_Use.Title" value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Car_Use.Title" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="06075250-30dc-4d32-bf97-e922cb30fac8" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Car_Use" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="id" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="Title" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<script type="text/javascript">
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(function (){
+		formrun.initData(initData, "Car_Use", fieldStatus, displayModel);
+	});
+</script>
+<p> </p><p style="text-align: center;"><span style="font-family: 黑体, SimHei; font-size: 26px;">用  车  管  理</span></p><p> </p><p><br/></p><table class="flowformtable" cellspacing="1" cellpadding="0"><tbody><tr class="firstRow"><td width="269" valign="top" style="-ms-word-break: break-all;">使用车辆</td><td width="269" valign="top" style="-ms-word-break: break-all;"><br/><input name="Car_Use.Use_Car" title="" class="mydict" id="Car_Use.Use_Car" type="text" value="" isflow="1" type1="flow_dict" rootid="db3b523f-8d87-4afe-b87a-3368f39f5b84" more="0"/></td><td width="269" valign="top" style="-ms-word-break: break-all;">使用人</td><td width="269" valign="top" style="-ms-word-break: break-all;"><br/><input name="Car_Use.Use_User" title="" class="mymember" id="Car_Use.Use_User" type="text" value="u_@Business.Platform.Users.CurrentUserID.ToString()" isflow="1" type1="flow_org" rootid="" more="0" workgroup="0" unit="0" dept="0" station="0" user="1"/></td></tr><tr><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">使用开始时间</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.Use_StartDate" title="" class="mycalendar" id="Car_Use.Use_StartDate" type="text" value="@(Utility.DateTimeNew.ShortDate)" isflow="1" type1="flow_datetime" istime="1" currentmonth="0" dayafter="0" daybefor="0" defaultvalue="@(Utility.DateTimeNew.ShortDate)"/></td><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">使用结束时间</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.Use_EndDate" title="" class="mycalendar" id="Car_Use.Use_EndDate" type="text" value="" isflow="1" type1="flow_datetime" istime="1" currentmonth="0" dayafter="0" daybefor="0" defaultvalue=""/></td></tr><tr><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">出车里程数</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.Start_Kilometers" title="" class="mytext" id="Car_Use.Start_Kilometers" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">返回里程数</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.End_Kilometers" title="" class="mytext" id="Car_Use.End_Kilometers" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td></tr><tr><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">目的地</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.Aim_Address" title="" class="mytext" id="Car_Use.Aim_Address" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">出车人</td><td valign="top" rowspan="1" colspan="1"><input name="Car_Use.Use_Driver" title="" class="mymember" id="Car_Use.Use_Driver" type="text" value="" isflow="1" type1="flow_org" rootid="" more="0" workgroup="0" unit="0" dept="0" station="0" user="1"/></td></tr></tbody></table><p> </p>

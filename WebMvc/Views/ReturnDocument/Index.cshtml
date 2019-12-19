@@ -1,0 +1,144 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "服务点退材料";
+    string query = string.Format("appid={0}&tabid={1}", Request.QueryString["appid"], Request.QueryString["tabid"]);
+    Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+
+}
+@model List<Data.Model.ReturnDocument>
+
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript" src="../../Scripts/FlowRun/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+    var query = '@Html.Raw(query)';
+</script>
+
+
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 检索 >> 服务点退材料列表</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="../../manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+                    <div class="toolbar" style="margin-top:0; border-top:none 0; position:fixed; top:0; left:0; right:0; margin-left:auto; z-index:999; width:100%; margin-right:auto; height:26px;">
+                        <div>
+
+                            <a href="#" onclick="fun_29b358e1ad644f09846c4554ae6b85c4();return false;" title="打印当前表单">
+                                <span style="background:url(/Images/ico/printer.gif) no-repeat left center;">打印</span>
+                            </a>
+                            <script type="text/javascript">
+                                function fun_29b358e1ad644f09846c4554ae6b85c4() { formPrint(); }
+                            </script>
+
+                        </div>
+                    </div>
+
+
+                    <div >
+                        <table class="table">
+                            <tr>
+                                <td>街道</td>
+                                <td><input name="StreetName" type="text" id="StreetName" style="width:120px;" value="@Html.Raw(ViewBag.StreetName)" /></td>
+                                <td>姓名</td>
+                                <td><input name="ReturnName" type="text" id="ReturnName" style="width:120px;" value="@Html.Raw(ViewBag.ReturnName)" /></td>
+                                <td>金额</td>
+                                <td><input name="ReturnAmount" type="text" id="ReturnAmount" style="width:120px;" value="@Html.Raw(ViewBag.ReturnAmount)" /></td>
+
+
+
+                            </tr>
+
+                            <tr>
+                                <td>开始时间</td>
+                                <td><input name="StartDate" type="text" id="StartDate" class="mycalendar" style="width:120px;" value="@Html.Raw(ViewBag.StartDate)" /></td>
+                                <td>结束时间</td>
+                                <td><input name="EndDate" type="text" id="EndDate" class="mycalendar" style="width:120px;" value="@Html.Raw(ViewBag.EndDate)" /></td>
+
+                                <td><input type="submit" name="Search" class="button" value='查询' /></td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <!-- 模块 -->
+
+                    <div id="form_body_div" class="tabs_wrapper">
+                        <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                        <div class="tabs_main" align="left">
+                                            <div id="PanelConfig">
+
+                                                <div id="PanelDefault">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+
+
+                                                                <td style="border:1px solid black;">街道</td>
+                                                                <td style="border:1px solid black;">姓名</td>
+                                                                <td style="border:1px solid black;">受理日期</td>
+                                                                <td style="border:1px solid black;">金额</td>
+                                                                <td style="border:1px solid black;">理由</td>
+                                                                <td style="border:1px solid black;">备注</td>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+
+                                                            @foreach (var ReturnDoclist in @Model.OrderByDescending(p => p.AddTime))
+                                                            {
+                                                                <tr>
+
+                                                                    <td width="20%" style="border:1px solid black;">@BDictionary.Get(new Guid(@ReturnDoclist.StreetName), false).Title</td>
+                                                                    <td width="10%" style="border:1px solid black;">@ReturnDoclist.ReturnName</td>
+                                                                    <td width="20%" style="border:1px solid black;">@ReturnDoclist.ReturnDateTime </td>
+                                                                    <td width="10%" style="border:1px solid black;">@ReturnDoclist.ReturnAmount</td>
+                                                                    <td width="20%" style="border:1px solid black;">@ReturnDoclist.Reason</td>
+                                                                    <td width="20%" style="border:1px solid black;">@ReturnDoclist.Remark</td>
+
+
+                                                                </tr>
+                                                            }
+
+
+                                                        </tbody>
+                                                    </table>
+
+                                                    
+                                                    <br />
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <!-- 模块 -->
+
+                    </div>
+            </div>
+        </div>
+    </form>

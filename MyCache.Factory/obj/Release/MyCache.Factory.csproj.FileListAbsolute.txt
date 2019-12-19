@@ -1,0 +1,27 @@
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.Factory.dll
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.Factory.pdb
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.InProc.dll
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.InProc.pdb
+E:\source\OA\OA\MyCache.Factory\bin\Release\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.Factory\obj\Release\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\MyCache.Factory\obj\Release\MyCache.Factory.dll
+E:\source\OA\OA\MyCache.Factory\obj\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Release\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\MyCache.Factory\obj\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Release\MyCache.Factory.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.Factory\obj\Release\MyCache.Factory.pdb

@@ -1,0 +1,37 @@
+﻿@{
+	string FlowID = Request.QueryString["flowid"];
+	string StepID = Request.QueryString["stepid"];
+	string GroupID = Request.QueryString["groupid"];
+	string TaskID = Request.QueryString["taskid"];
+	string InstanceID = Request.QueryString["instanceid"];
+	string DisplayModel = Request.QueryString["display"] ?? "0";
+	string DBConnID = "06075250-30dc-4d32-bf97-e922cb30fac8";
+	string DBTable = "Repair";
+	string DBTablePK = "ID";
+	string DBTableTitle = "Title";
+	Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+	Business.Platform.WorkFlow BWorkFlow = new Business.Platform.WorkFlow();
+	Business.Platform.WorkFlowTask BWorkFlowTask = new Business.Platform.WorkFlowTask();
+	string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+	LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+	string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="Repair.Title" name="Repair.Title" value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Repair.Title" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="06075250-30dc-4d32-bf97-e922cb30fac8" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Repair" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="Title" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<script type="text/javascript">
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(function (){
+		formrun.initData(initData, "Repair", fieldStatus, displayModel);
+	});
+</script>
+<p style="text-align: center;"><strong><br/></strong></p><p style="text-align: center;"><span style="font-family: 黑体, SimHei; font-size: 24px;"><strong>设    备    报    修</strong></span></p><p><br/></p><table class="flowformtable" cellspacing="1" cellpadding="0" data-sort="sortDisabled"><tbody><tr class="firstRow"><td width="268" valign="top" style="-ms-word-break: break-all;">名称<br/></td><td width="268" valign="top" rowspan="1" colspan="1"><input name="Repair.name" title="" class="mytext" id="Repair.name" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td><td width="268" valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">型号</td><td width="268" valign="top"><input name="Repair.type" title="" class="mytext" id="Repair.type" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td></tr><tr><td width="268" valign="top" style="-ms-word-break: break-all;">数量<br/></td><td width="268" valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1"><input name="Repair.quantity" title="" class="mytext" id="Repair.quantity" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td><td width="268" valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">报修时间</td><td width="268" valign="top"><input name="Repair.AddTime" title="" class="mycalendar" id="Repair.AddTime" type="text" value="@(Utility.DateTimeNew.ShortDate)" isflow="1" type1="flow_datetime" currentmonth="0" dayafter="0" daybefor="0" istime="1" defaultvalue="@(Utility.DateTimeNew.ShortDate)"/></td></tr><tr><td valign="top" style="-ms-word-break: break-all;" rowspan="1" colspan="1">报修人</td><td valign="top" rowspan="1" colspan="1"><input name="Repair.UserID" title="" class="mymember" id="Repair.UserID" type="text" value="u_@Business.Platform.Users.CurrentUserID.ToString()" user="1" more="0" isflow="1" type1="flow_org" workgroup="0" rootid="" station="0" dept="0" unit="0"/></td><td valign="top" rowspan="1" colspan="1"><br/></td><td valign="top" rowspan="1" colspan="1"><br/></td></tr><tr><td width="268" valign="top" style="-ms-word-break: break-all;">备注<br/></td><td valign="top" rowspan="1" colspan="3"><input name="Repair.remark" title="" class="mytext" id="Repair.remark" type="text" value="" isflow="1" type1="flow_text" valuetype="0"/></td></tr></tbody></table><p> </p>

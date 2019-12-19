@@ -1,0 +1,21 @@
+E:\source\OA\OA\MyCache.InProc\bin\Release\MyCache.InProc.dll
+E:\source\OA\OA\MyCache.InProc\bin\Release\MyCache.InProc.pdb
+E:\source\OA\OA\MyCache.InProc\bin\Release\MyCache.Interface.dll
+E:\source\OA\OA\MyCache.InProc\bin\Release\MyCache.Interface.pdb
+E:\source\OA\OA\MyCache.InProc\obj\Release\MyCache.InProc.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\MyCache.InProc\obj\Release\MyCache.InProc.dll
+E:\source\OA\OA\MyCache.InProc\obj\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\obj\Release\MyCache.InProc.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\obj\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\MyCache.InProc\obj\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\obj\Release\MyCache.InProc.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\obj\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\MyCache.InProc\obj\Release\MyCache.InProc.pdb

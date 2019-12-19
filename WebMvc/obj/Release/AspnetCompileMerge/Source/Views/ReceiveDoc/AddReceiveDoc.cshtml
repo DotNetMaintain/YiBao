@@ -1,0 +1,432 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "AddReceiveDoc";
+
+    if (ViewBag.Result == "OK")
+    {
+        <script type="text/javascript">
+            //  window.parent.location = '../ReceiveDoc';
+            top.openApp('../ReceiveDoc', 0, '收文列表', 'c1733387ea9142119700239a2f662191', 0, 0, false);
+
+
+        </script>
+    }
+}
+
+<script type="text/javascript" src="../../js/validator.js"></script>
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+
+
+
+
+    function jsStartPreviewProc() {
+        JsRefreshDevList();
+        JsRefreshResolution();
+        var testocx = document.getElementById("testocx");
+        try {
+            testocx.StopPreview();
+            ret = testocx.StartPreviewProc();
+            document.getElementById("SealCapBox").disabled = 0;
+        }
+        catch (e) {
+            window.alert(e);	//"加载DLL错误！");
+        }
+
+    }
+
+
+
+    function JsRefreshDevList() {
+
+        var testocx = window.document.getElementById("testocx");
+        testocx.WriteLog = true;
+
+        var sel = document.getElementById('s1');
+        var inum = testocx.RefreshDevList();
+
+        var i = 0;
+        var cstr = "";
+        for (i = 0; i < inum; i++) {
+            cstr = testocx.GetDevNameByIdx(i);
+
+            if (cstr != "") {
+                var opt = document.createElement("OPTION");
+
+                sel.options.add(opt);
+                opt.innerText = cstr;
+                opt.value = i;
+
+                if (cstr == "主摄像头(2M)") {
+                    opt.selected = true;
+                    testocx.SetDevNameSel(i);
+                }
+            }
+        }
+
+
+    }
+
+
+
+
+    function JsRefreshResolution() {
+        var testocx = window.document.getElementById("testocx");
+        var sel = document.getElementById('s2');
+        var i = document.getElementById('s1').value;
+
+        var inum = testocx.RefreshResolution(i);
+
+        var cstr = "";
+        for (i = 0; i < inum; i++) {
+            cstr = testocx.GetResolutionByIdx(i);
+
+            if (cstr != "") {
+                var opt = document.createElement("OPTION");
+                sel.options.add(opt);
+                opt.innerText = cstr;
+                opt.value = i;
+            }
+        }
+
+
+    }
+
+
+
+    function SealCapWeb() {
+        var testocx = document.getElementById("testocx");
+        testocx.customSavePath = "D:\\img\\";
+        try {
+            var format = document.getElementById('s4').value;
+            var DPI = document.getElementById('s5').value;
+            testocx.pDPI = DPI;
+            testocx.nColorSpace = 0;
+            testocx.nRotateAngle = 0;
+            ret = testocx.SealCap(format);
+            var sel = document.getElementById('s3');
+            for (var x = sel.length - 1; x >= 0; x--) {
+                sel.options[x].removeNode(true);
+            }
+            var inum = testocx.RefreshImgList(format);
+            var cstr = "";
+            for (i = 0; i < inum; i++) {
+                cstr = testocx.GetImgNameByIdx(i);
+                if (cstr != "") {
+                    var opt = document.createElement("OPTION");
+                    sel.options.add(opt);
+                    opt.innerText = cstr;
+                    opt.value = i;
+                }
+            }
+        }
+        catch (e) {
+            window.alert(e);	//"加载DLL错误！");
+        }
+
+
+        if (ret == 0) {
+
+            alert("操作成功。");
+        } else {
+            alert("操作失败。");
+        }
+
+    }
+
+    function jsUploadLocalImg() {
+        var testocx = document.getElementById("testocx");
+
+        testocx.bShowMsgBox = false;
+
+        ret = testocx.UploadLocalImg("http://168.151.1.5:8087/Default.aspx");
+        testocx.bUploadDel = true;
+        alert("函数返回值：" + ret + "  服务器返回:" + testocx.HttpResponse);
+    }
+
+
+
+    function jsDeleteImg() {
+        var testocx = document.getElementById("testocx");
+        if (ImgIdx >= 0)
+            ret = testocx.DeleteImg(ImgIdx);
+        var sel = document.getElementById('s3');
+        for (var x = sel.length - 1; x >= 0; x--) {
+            sel.options[x].removeNode(true);
+        }
+        var format = document.getElementById('s4').value;
+        var inum = testocx.RefreshImgList(format);
+        var cstr = "";
+        for (i = 0; i < inum; i++) {
+            cstr = testocx.GetImgNameByIdx(i);
+            if (cstr != "") {
+                var opt = document.createElement("OPTION");
+                sel.options.add(opt);
+                opt.innerText = cstr;
+                opt.value = i;
+            }
+        }
+    }
+
+
+    function JsSelImgName() {
+        ImgIdx = document.getElementById('s3').value;
+    }
+
+
+    function SendSealWeb() {
+
+
+
+
+
+        try {
+            var sel = document.getElementById('s3');
+            for (var x = sel.length - 1; x >= 0; x--)
+            {
+                testocx.cPicName = "D:\\img\\" + sel.options[x].innerText;
+                ret = testocx.SendSeal("http://localhost:8087/Default.aspx");
+            }
+
+           
+        }
+        catch (e) {
+            window.alert(e);	//"加载DLL错误！");
+        }
+
+
+        if (ret == 1) {
+            var sel = document.getElementById('s3');
+            var filename = "";
+            for (var x = sel.length - 1; x >= 0; x--) {
+                filename = filename+"http://localhost:8087/images/" + sel.options[x].innerText+";";
+                sel.options[x].removeNode(true);
+                testocx.DeleteImg(x);
+
+            }
+            document.getElementById('ReceiveDocument.DocumentAttech').value=filename
+            var format = document.getElementById('s4').value;
+            var inum = testocx.RefreshImgList(format);
+            var cstr = "";
+            for (i = 0; i < inum; i++) {
+                cstr = testocx.GetImgNameByIdx(i);
+                if (cstr != "") {
+                    var opt = document.createElement("OPTION");
+                    sel.options.add(opt);
+                    opt.innerText = cstr;
+                    opt.value = i;
+
+
+                }
+
+
+            }
+
+
+            //FileNameCtrl.value = "本地文件名:" + testocx.cPicName;
+            alert("操作成功。");
+        } else {
+            alert("操作失败。");
+        }
+    }
+
+
+
+
+
+
+    $(function ()
+    {
+      @Html.Raw(ViewBag.Script)
+    });
+
+
+
+
+</script>
+
+
+<body>
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 我的工具 >> 添加帮困外省凭证</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="/manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+                <div class="clearboth"></div>
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+
+
+                    <!-- 模块 -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+
+                                <div id="config_basic1" class="tabs_wrapper">
+                                    <div class="tabs_main" align="left">
+                                        <div id="PanelConfig">
+
+                                            <table class="table">
+
+                                                <tr>
+                                                    <th style="width:150px;">公文分类：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <span class="note">公文分类</span>
+
+                                                        <input name="ReceiveDocument.DocumentType" title="" class="mydict" id="ReceiveDocument.DocumentType" style="width: 537px; height: 21px;" type="text" size="1" value="" isflow="1" type1="flow_dict" more="0" rootid="8d446bc7-b061-475e-8fe1-2f64e313c6a7" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:150px;">公文密级：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentLevel" title="" class="mydict" id="ReceiveDocument.DocumentLevel" style="width: 537px; height: 27px;" type="text" size="1" value="" isflow="1" type1="flow_dict" more="0" rootid="e3ea0207-4874-4cb0-8dd9-7ac8cdccf6bd" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style="width:150px;">公文标题：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentTitle" title="" class="mytext" id="ReceiveDocument.DocumentTitle" style="width: 538px; height: 27px;" type="text" size="1" value="" isflow="1" type1="flow_text" valuetype="0" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style="width:150px;">来文单位：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentUnit" title="" class="mytext" id="ReceiveDocument.DocumentUnit" style="width: 539px; height: 21px;" type="text" size="1" value="" isflow="1" type1="flow_text" valuetype="0" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style="width:150px;">发文字号：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentCode" title="" class="mytext" id="ReceiveDocument.DocumentCode" style="width: 539px; height: 21px;" type="text" size="1" value="" isflow="1" type1="flow_text" valuetype="0" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:150px;">上传电子档附件：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentAttech" title="" class="myfile" id="ReceiveDocument.DocumentAttech" style="width: 539px; height: 27px;" type="text" size="1" value="" isflow="1" type1="flow_files" filetype="" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th style="width:150px;">附件：&nbsp;<a href="#" class="help">[?]</a></th>
+                                                    <td>
+                                                        <input name="ReceiveDocument.DocumentAttech" title="" class="mytext" id="ReceiveDocument.DocumentAttech" style="width: 539px; height: 27px;" type="text" size="1" value="" isflow="1" type1="flow_files" filetype="" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:100px;">&nbsp;</th>
+                                                    <td>
+                                                        &nbsp;
+
+                                                        <input type="submit" name="Save" class="button" value='保存' /> &nbsp;&nbsp;
+                                                        <input type="reset" class="button" value='重置' />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- 模块 -->
+
+                </div>
+
+
+                <div>
+
+                    <p>
+                        <object classid="clsid:1C68DF21-EFEC-4623-85E5-0C369B95F15E" width=600 height=400 id="testocx"></object>
+                    </p>
+                    <p>
+
+                        请选择摄像头：
+                        <select name="SelectBox" size="1" id="s1" onchange="JsSelDevName()"></select>
+
+                        请选择分辨率：
+                        <select name="SelectResolutionBox" size="1" id="s2" onchange="JsSelResolution()"></select>
+
+                        请选择图片输出格式：
+                        <select name="SelectFormatBox" size="1" id="s4" onchange="JsSelFormat()">
+                            <option value="jpg" selected="selected">jpg</option>
+                            <option value="bmp">bmp</option>
+                            <option value="tif">tif</option>
+                            <option value="gif">gif</option>
+                        </select>
+                        请选择图片输出DPI：
+                        <select name="SelectDPIBox" size="1" id="s5">
+                            <option value=0 selected="selected">默认值</option>
+                            <option value=72>72</option>
+                            <option value=200>200</option>
+                            <option value=300>300</option>
+                        </select>
+                    <p>
+                        <input type="button" name="PreviewBox" value="普通预览(可旋转视频)" onclick="jsStartPreviewProc()">
+                        <input id="SealCapBox" name="SealCapBox" type="button" disabled="disabled" onclick="SealCapWeb()" value=" 拍摄 ">
+
+                        <input type="button" name="UploadLocalImg" value="上传本地图片" onclick="SendSealWeb()">
+                    </p>
+                    <p>
+                        拍摄列表：
+                        <select name="SelectImgBox" size="5" id="s3" style="overflow:scroll" onchange="JsSelImgName()">
+
+                            <script language="JavaScript">
+<!--
+                var testocx=document.getElementById("testocx");
+                var format = document.getElementById('s4').value;
+
+	var inum = testocx.RefreshImgList(format);
+	var i=0;
+	var cstr="";
+	var opt  = "";
+	for (i=0; i<inum; i++)
+	{
+		opt = "<option value ='";
+		opt+= i;
+		opt+= "'>";
+		cstr = testocx.GetImgNameByIdx(i);
+		if (cstr!="")
+		{
+			opt+=cstr;
+			opt+="</option>";
+			document.write(opt);
+		}
+	}
+//-->
+                            </script>
+                        </select>
+                        <input type="button" name="DelImg" value="删除照片" onclick="jsDeleteImg()">
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</body>
+
+
+
+
+
+

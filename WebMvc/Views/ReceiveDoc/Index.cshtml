@@ -1,0 +1,148 @@
+﻿@{
+    Page.CheckApp = false;
+    ViewBag.Title = "收文列表";
+    Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+
+}
+@model List<Data.Model.ReceiveDoc>
+
+
+<link type="text/css" href="../../manage/Style/InterFace.Css" rel="stylesheet" rev="stylesheet" media="all" />
+<link type="text/css" href="../../manage/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../manage/include/common.js"></script>
+<script type="text/javascript">
+    var win = new RoadUI.Window();
+    var validate = new RoadUI.Validate();
+</script>
+<body>
+
+    <form action="" method="post">
+        @Html.AntiForgeryToken()
+        <div id="interface_inside">
+            <div id="interface_quick">
+                <div class="interface_quick_left">您现在的操作 >> 检索 >> 帮困外省市贫困补助列表</div>
+                <div class="interface_quick_right">
+                    <a href="javascript:void(0)" onclick="javascript:window.location.replace(window.location.href);"><img style="vertical-align:middle;" src="../../manage/images/reload.png" /><strong>刷新</strong></a>
+                    &nbsp; &nbsp;
+                    <a href="javascript:history.back();"><img style="vertical-align:middle;" src="../../manage/images/ico_up1.gif" /><strong>后退</strong></a>
+                </div>
+
+            </div>
+            <div id="interface_main">
+                <div id="tabs_config" class="tabsbox">
+
+                    <div class="clearboth"></div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td>公文分类</td>
+                                <td><input name="DocumentType" type="text" id="DocumentType" style="width:120px;" value="@Html.Raw(ViewBag.DocumentType)" /></td>
+                                <td>公文密级</td>
+                                <td><input name="DocumentLevel" type="text" id="DocumentLevel" style="width:120px;" value="@Html.Raw(ViewBag.DocumentLevel)" /></td>
+                                <td>公文标题</td>
+                                <td><input name="DocumentTitle" type="text" id="DocumentTitle" style="width:120px;" value="@Html.Raw(ViewBag.DocumentTitle)" /></td>
+                                
+                           </tr><tr>
+    <td>来文单位</td>
+    <td><input name="DocumentUnit" type="text" id="DocumentUnit" style="width:120px;" value="@Html.Raw(ViewBag.DocumentUnit)" /></td>
+    <td>发文字号</td>
+    <td><input name="DocumentCode" type="text" id="DocumentCode" style="width:120px;" value="@Html.Raw(ViewBag.DocumentCode)" /></td>
+    <td>来文时间</td>
+    <td><input name="AddTime" type="text" id="AddTime" class="mycalendar" style="width:120px;" value="@Html.Raw(ViewBag.AddTime)" /></td>
+
+    <td><input type="submit" name="Search" class="button" value='查询' /></td>
+</tr>
+
+                        </table>
+
+                    </div>
+
+                    <!-- 模块 -->
+
+                    <table style=" width:100%;" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+
+                                <div id="config_basic1" class="tabs_wrapper">
+                                    <div class="tabs_main" align="left">
+                                        <div id="PanelConfig">
+
+                                            <div id="PanelDefault">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <td>公文分类</td>
+                                                            <td>公文密级</td>
+                                                            <td >公文标题</td>
+                                                            <td >来文单位</td>
+                                                            <td >发文字号</td>
+                                                            <td >来文时间</td>
+                                                            <td>附件</td>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        @foreach (var ReceiveDoclist in @Model.OrderByDescending(p => p.AddTime))
+                                                        {
+                                                            <tr>
+                                                                <td width="120">@BDictionary.Get(new Guid(ReceiveDoclist.DocumentType),true).Title</td>
+                                                                <td width="120">@BDictionary.Get(new Guid(ReceiveDoclist.DocumentLevel), true).Title</td>
+                                                                <td width="120">@ReceiveDoclist.DocumentTitle</td>
+                                                                <td width="120">@ReceiveDoclist.DocumentUnit</td>
+                                                                <td width="120">@ReceiveDoclist.DocumentCode</td>
+                                                                <td width="175">@ReceiveDoclist.AddTime</td>
+
+                                                                <td width="220">
+                                                                    @{
+                                                                        
+                                                                    string [] attech=ReceiveDoclist.DocumentAttech.Split(';');
+                                                                      foreach(string attechfile in attech)
+                                                                      {
+                                                                          if (!attechfile.IsNullOrEmpty())
+                                                                          { 
+                                                                           <a href="@attechfile" target="_blank" style="color:blue">@attechfile.Substring(@attechfile.LastIndexOf('/') + 1, @attechfile.LastIndexOf('.') - @attechfile.LastIndexOf('/') - 1)</a>
+                                                                          }
+                                                                         
+                                                                        }
+                                                                    }
+                                                                   
+                                                                </td>
+                                                               
+                                                            </tr>
+                                                        }
+
+
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="table">
+                                                    <tr>
+                                                        <td class="page">
+                                                            <span style="float:left;" id=num runat=server></span>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<uc1:Page ID="Page1" runat="server" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <br />
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 模块 -->
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+

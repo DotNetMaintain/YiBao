@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "闵行医保oa办公平台--Login";
+    Page.CheckApp = false;
+}
+
+
+
+
+<link rel=stylesheet type=text/css href="../../images/Info_aspx_files/demo.css">
+<link rel=stylesheet type=text/css href="../../images/Info_aspx_files/login.css">
+
+<div class="header">
+    <h1 class="headerLogo"><a title="管理系统" target="_blank" href="#"><img alt="logo" src="images/logo1.png"></a></h1>
+    <div class="headerNav">
+        <a target="_blank" href="#">意见反馈</a>
+        <a target="_blank" href="#">帮助</a>
+    </div>
+</div>
+
+<div class="banner">
+
+    <div class="login-aside">
+        <div id="o-box-up"></div>
+        <div id="o-box-down" style="table-layout:fixed;">
+            <div class="error-box"></div>
+
+            <form method="post" id="form1">
+                <input type="hidden" id="Force" name="Force" value="0" />
+                <div class="fm-item">
+                    <label for="logonId" class="form-label">内部管理系统登陆：</label>
+                    <input type="text" value="" maxlength="100" id="Account" name="Account" class="i-text">
+                    <div class="ui-form-explain"></div>
+                </div>
+
+                <div class="fm-item">
+                    <label for="logonId" class="form-label">登陆密码：</label>
+                    <input type="password" value="" maxlength="100" id="Password" name="Password" class="i-text">
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="fm-item">
+                    <input type="submit" value="确认登录" class="btn-login" />
+                    <div class="ui-form-explain"></div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="bd">
+        <ul>
+            <li style="background: url(../../Images/login/theme-pic1.jpg) #CCE1F3 center 0 no-repeat; "><a target="_blank" href="#"></a></li>
+        </ul>
+    </div>
+
+    <div class="hd"><ul></ul></div>
+</div>
+
+
+<div class="banner-shadow"></div>
+
+<div class="footer">
+    <p>Copyright &copy; 2015.上海智协网络工程有限公司 All rights reserved.</p>
+</div>
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+
+
+<script type="text/javascript">
+
+
+
+
+$(function(){
+
+
+
+    var isVcode = '1' == '@Session[ViewBag.IsVcodeSessionKey]';
+    $(function ()
+    {
+
+        @Html.Raw(ViewBag.ErrMsg)
+        @Html.Raw(ViewBag.Forcescript)
+    });
+    function checkForm()
+    {
+        var form1 = document.forms[0];
+        if ($.trim(form1.Account.value).length == 0)
+        {
+            alert("帐号不能为空!");
+            form1.Account.focus();
+            return false;
+        }
+        if ($.trim(form1.Password.value).length == 0)
+        {
+            alert("密码不能为空!");
+            form1.Password.focus();
+            return false;
+        }
+
+        return true;
+    }
+    function cngimg()
+    {
+        $('#VcodeImg').attr('src', 'VCode?' + new Date().toString());
+    }
+
+
+    });
+
+
+
+</script>

@@ -1,0 +1,99 @@
+E:\source\OA\OA\Business.Platform\bin\Release\Business.Platform.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Business.Platform.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Antlr3.Runtime.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Factory.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Interface.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Model.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Data.MSSQL.dll
+E:\source\OA\OA\Business.Platform\bin\Release\LitJSON.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.Factory.dll
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.InProc.dll
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.Interface.dll
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.IO.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Newtonsoft.Json.dll
+E:\source\OA\OA\Business.Platform\bin\Release\System.Web.Optimization.dll
+E:\source\OA\OA\Business.Platform\bin\Release\Utility.dll
+E:\source\OA\OA\Business.Platform\bin\Release\WebGrease.dll
+E:\source\OA\OA\Business.Platform\bin\Release\LitJSON.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.Factory.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.InProc.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.Interface.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\MyCache.IO.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Factory.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Interface.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Data.Model.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Data.MSSQL.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Utility.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Antlr3.Runtime.pdb
+E:\source\OA\OA\Business.Platform\bin\Release\Newtonsoft.Json.xml
+E:\source\OA\OA\Business.Platform\bin\Release\System.Web.Optimization.xml
+E:\source\OA\OA\Business.Platform\obj\Release\Business.Platform.csprojResolveAssemblyReference.cache
+E:\source\OA\OA\Business.Platform\obj\Release\Business.Platform.dll
+E:\source\OA\OA\Business.Platform\obj\Release\Business.Platform.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Business.Platform.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Business.Platform.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Antlr3.Runtime.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Factory.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Interface.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\LitJSON.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Newtonsoft.Json.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\System.Web.Optimization.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Utility.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\WebGrease.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\LitJSON.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Factory.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Interface.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Utility.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Antlr3.Runtime.pdb
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\Newtonsoft.Json.xml
+E:\source\OA - 副本\OA - 副本\Business.Platform\bin\Release\System.Web.Optimization.xml
+E:\source\OA - 副本\OA - 副本\Business.Platform\obj\Release\Business.Platform.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 副本\Business.Platform\obj\Release\Business.Platform.dll
+E:\source\OA - 副本\OA - 副本\Business.Platform\obj\Release\Business.Platform.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Business.Platform.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Business.Platform.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Antlr3.Runtime.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Model.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.MSSQL.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\LitJSON.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.Factory.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.InProc.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.Interface.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.IO.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Newtonsoft.Json.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\System.Web.Optimization.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Utility.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\WebGrease.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\LitJSON.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.InProc.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\MyCache.IO.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Factory.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Interface.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.Model.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Data.MSSQL.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Utility.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Antlr3.Runtime.pdb
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\Newtonsoft.Json.xml
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\bin\Release\System.Web.Optimization.xml
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\obj\Release\Business.Platform.csprojResolveAssemblyReference.cache
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\obj\Release\Business.Platform.dll
+E:\source\OA - 副本\OA - 可发布版本\Business.Platform\obj\Release\Business.Platform.pdb

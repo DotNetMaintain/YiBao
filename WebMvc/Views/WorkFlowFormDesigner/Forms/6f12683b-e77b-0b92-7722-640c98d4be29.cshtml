@@ -1,0 +1,37 @@
+﻿@{
+	string FlowID = Request.QueryString["flowid"];
+	string StepID = Request.QueryString["stepid"];
+	string GroupID = Request.QueryString["groupid"];
+	string TaskID = Request.QueryString["taskid"];
+	string InstanceID = Request.QueryString["instanceid"];
+	string DisplayModel = Request.QueryString["display"] ?? "0";
+	string DBConnID = "06075250-30dc-4d32-bf97-e922cb30fac8";
+	string DBTable = "PerformanceMatchUser";
+	string DBTablePK = "id";
+	string DBTableTitle = "Title";
+	Business.Platform.Dictionary BDictionary = new Business.Platform.Dictionary();
+	Business.Platform.WorkFlow BWorkFlow = new Business.Platform.WorkFlow();
+	Business.Platform.WorkFlowTask BWorkFlowTask = new Business.Platform.WorkFlowTask();
+	string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+	LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+	string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="PerformanceMatchUser.Title" name="PerformanceMatchUser.Title" value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="PerformanceMatchUser.Title" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="06075250-30dc-4d32-bf97-e922cb30fac8" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="PerformanceMatchUser" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="id" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="Title" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<script type="text/javascript">
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(function (){
+		formrun.initData(initData, "PerformanceMatchUser", fieldStatus, displayModel);
+	});
+</script>
+<p><br/></p><p><br/></p><p style="TEXT-ALIGN: center"><span style="FONT-SIZE: 26px; FONT-FAMILY: 黑体, SimHei">绩效考核匹配人员</span></p><p><span style="FONT-SIZE: 26px; FONT-FAMILY: 黑体, SimHei"><br/></span></p><table class="flowformtable" cellspacing="1" cellpadding="0"><tbody><tr class="firstRow"><td valign="top" width="1139"><table id="subtable_PerformanceMatchUserList_id_id_PerformanceMatchUserID" class="flowformsubtable" style="WIDTH: 99%; MARGIN: 0px auto" cellspacing="1" cellpadding="0" issubflowtable="1"><thead><tr><td>考核项目<input type="hidden" value="PerformanceMatchUserList_id_id_PerformanceMatchUserID" name="flowsubtable_id"/><input type="hidden" value="PerformanceMatchUserList" name="flowsubtable_PerformanceMatchUserList_id_id_PerformanceMatchUserID_secondtable"/><input type="hidden" value="id" name="flowsubtable_PerformanceMatchUserList_id_id_PerformanceMatchUserID_primarytablefiled"/><input type="hidden" value="id" name="flowsubtable_PerformanceMatchUserList_id_id_PerformanceMatchUserID_secondtableprimarykey"/><input type="hidden" value="PerformanceMatchUserID" name="flowsubtable_PerformanceMatchUserList_id_id_PerformanceMatchUserID_secondtablerelationfield"/></td><td>窗口人员</td><td>匹配人员</td><td></td></tr></thead><tbody><tr type1="listtr"><td iscount="0" colname="PerformanceMatchUserList_Factor_Name"><input type="hidden" value="2773eb6e7227abadd117a1e0d0b8aea0" name="hidden_guid_PerformanceMatchUserList_id_id_PerformanceMatchUserID"/><input type="hidden" value="PerformanceMatchUserList_id_id_PerformanceMatchUserID" name="flowsubid"/><input id="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_Factor_Name" class="mytext" name="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_Factor_Name" type1="subflow_text" colname="PerformanceMatchUserList_Factor_Name" valuetype="0" issubflow="1"/></td><td iscount="0" colname="PerformanceMatchUserList_User_Name"><input id="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_User_Name" class="mytext" name="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_User_Name" type1="subflow_text" colname="PerformanceMatchUserList_User_Name" valuetype="0" issubflow="1"/></td><td iscount="0" colname="PerformanceMatchUserList_Match_Name"><input id="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_Match_Name" class="mytext" name="PerformanceMatchUserList_id_id_PerformanceMatchUserID_2773eb6e7227abadd117a1e0d0b8aea0_PerformanceMatchUserList_Match_Name" type1="subflow_text" colname="PerformanceMatchUserList_Match_Name" valuetype="0" issubflow="1"/></td><td><input onclick="formrun.subtableNewRow(this);" class="mybutton" style="MARGIN-RIGHT: 4px" type="button" value="增加"/><input onclick="formrun.subtableDeleteRow(this);" class="mybutton" type="button" value="删除"/></td></tr></tbody></table></td></tr></tbody></table><p><span style="FONT-SIZE: 26px; FONT-FAMILY: 黑体, SimHei"><br/></span></p>
